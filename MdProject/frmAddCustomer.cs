@@ -149,10 +149,15 @@ namespace MdProject
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-             string query1 ="delete from customer where customerid='"+txtCustomerId.Text+"'";
-                    clsConnection.SendQuery(query1);
-            MessageBox.Show("Deleted Successfully");
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to Delete?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string query1 = "delete from customer where customerid='" + txtCustomerId.Text + "'";
+                clsConnection.SendQuery(query1);
+                MessageBox.Show("Deleted Successfully");
+                this.Close();
+            }
         }
     }
 }

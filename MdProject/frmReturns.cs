@@ -148,6 +148,7 @@ namespace MdProject
 
                 string query3 = "UPDATE orderdetails SET  Qty=Qty-" + txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "' and orderid='"+txtOrderId.Text+"'";
                 clsConnection.SendQuery(query3);
+                
 
                 if (amountPayingBack >= creditamount)
                 {
@@ -155,6 +156,7 @@ namespace MdProject
                     amountPayingBack = amountPayingBack - creditamount;
                     MessageBox.Show("Amount that should handover to customer Rs." + amountPayingBack);
                     string query4 = "UPDATE customer SET creditvalue=" + 0 + " where customerID ='" + txtCustomerId.Text + "'";
+                    
                     clsConnection.SendQuery(query4);
                 }
                 else
@@ -163,6 +165,8 @@ namespace MdProject
                     MessageBox.Show("New credit value of customer is Rs." + creditamount);
                     string query5 = "UPDATE customer SET creditvalue=" + creditamount + " where customerID ='" + txtCustomerId.Text + "'";
                     clsConnection.SendQuery(query5);
+
+                    
                 }
 
                 foreach (var c in this.Controls)
