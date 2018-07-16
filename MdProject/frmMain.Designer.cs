@@ -39,7 +39,6 @@
             this.pnlSidePanel = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOrder
@@ -235,15 +234,6 @@
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(723, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -251,7 +241,6 @@
             this.BackgroundImage = global::MdProject.Properties.Resources.home_new;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1924, 1084);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlSidePanel);
@@ -289,7 +278,6 @@
         private System.Windows.Forms.Panel pnlSidePanel;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.Button button1;
     }
 }
 
