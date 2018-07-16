@@ -138,29 +138,48 @@ namespace MdProject
 
         private void btndelete_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dgvSalesdetails.Rows.Count; i++)
+            DialogResult result = MessageBox.Show("Are you sure you want to Delete?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-
-                try
+                for (int i = 0; i < dgvSalesdetails.Rows.Count; i++)
                 {
 
-                    string IID = dgvSalesdetails.Rows[i].Cells[0].Value.ToString();
-                    string BID = dgvSalesdetails.Rows[i].Cells[1].Value.ToString();
+                    try
+                    {
 
-                    int quantity = Int32.Parse(dgvSalesdetails.Rows[i].Cells[3].Value.ToString()) + Int32.Parse(dgvSalesdetails.Rows[i].Cells[4].Value.ToString());
-                    string query = "UPDATE item SET Qty=Qty+" + quantity + " where ItemID ='" + IID + "'";
-                    clsConnection.SendQuery(query);
+                        string IID = dgvSalesdetails.Rows[i].Cells[0].Value.ToString();
+                        string BID = dgvSalesdetails.Rows[i].Cells[1].Value.ToString();
 
+                        int quantity = Int32.Parse(dgvSalesdetails.Rows[i].Cells[3].Value.ToString()) + Int32.Parse(dgvSalesdetails.Rows[i].Cells[4].Value.ToString());
+                        string query = "UPDATE item SET Qty=Qty+" + quantity + " where ItemID ='" + IID + "'";
+                        clsConnection.SendQuery(query);
+
+                        string query1 = "UPDATE itembatch SET Quantity=Quantity+" + quantity + " where ItemID ='" + IID + "' and batchid='" + BID + "'";
+                        clsConnection.SendQuery(query1);
+
+                        string query2 = "delete from orderbill where orderid='" + txtOrderId.Text + "'";
+                        clsConnection.SendQuery(query2);
+
+                        string query3 = "delete from orderdetails where orderid='" + txtOrderId.Text + "'";
+                        clsConnection.SendQuery(query3);
+
+
+                        this.Close();
+
+                    }
+                    catch (SqlException sexc)
+                    {
+                        clsConnection.connectionclose();
+                        MessageBox.Show("Enter an Item only once", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        clsConnection.connectionclose();
+                    }
                 }
-                catch (SqlException sexc)
-                {
-                    clsConnection.connectionclose();
-                    MessageBox.Show("Enter an Item only once", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    clsConnection.connectionclose();
-                }
+                MessageBox.Show("Deleted Successfully");
+                this.Close();
             }
         }
     }
