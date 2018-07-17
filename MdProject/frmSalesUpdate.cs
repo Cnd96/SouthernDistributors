@@ -64,5 +64,10 @@ namespace MdProject
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void lblOrder_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -17,6 +17,15 @@ namespace MdProject
 
             return db;
         }
+        public static DataTable PaymentSearch2(string cid)
+        {
+
+            DataTable db = new DataTable();
+            string query = "Select p.paymentid,c.customername,p.date,p.amount from payment p inner join customer c on p.customerid=c.customerid where c.customerid='" + cid + "'";
+            db = clsConnection.GetData(query);
+
+            return db;
+        }
         public static int insertTopayment(string pid, string cid,  string Date, float amount)
         {
             string query = "insert payment values ('" + pid + "', '" + cid + "',  '" + Date + "', " + amount + "); ";

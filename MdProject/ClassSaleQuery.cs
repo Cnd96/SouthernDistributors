@@ -49,6 +49,15 @@ namespace MdProject
 
             return db;
         }
+        public static DataTable salesdetailsSearch2(string cid)
+        {
+
+            DataTable db = new DataTable();
+            string query = "Select ob.orderid, c.customername, ob.date, ob.amounttobepaid, ob.amountpaid, ob.creditvalue from orderbill ob inner join customer c on c.customerid=ob.customerid  where c.customerid='" + cid + "'";
+            db = clsConnection.GetData(query);
+
+            return db;
+        }
         public static DataTable wildcardsalesdetailsSearch(string oid)
         {
 

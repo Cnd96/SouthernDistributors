@@ -146,8 +146,6 @@ namespace MdProject
                 string query2 = "UPDATE itembatch SET  Quantity=Quantity+" +txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "'";
                 clsConnection.SendQuery(query2);
 
-                string query3 = "UPDATE orderdetails SET  Qty=Qty-" + txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "' and orderid='"+txtOrderId.Text+"'";
-                clsConnection.SendQuery(query3);
                 
 
                 if (amountPayingBack >= creditamount)
@@ -177,6 +175,11 @@ namespace MdProject
                     }
                 }
             }
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

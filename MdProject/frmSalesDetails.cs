@@ -39,6 +39,29 @@ namespace MdProject
                 MessageBox.Show(ex.Message);
             }
         }
+        public frmSalesDetails(string oid,int x)
+        {
+            InitializeComponent();
+            orderid = oid;
+            try
+            {
+                customernamefill();
+                txtOrderId.Text = orderid;
+                DataTable db = new DataTable();
+                db = ClassSaleQuery.customersearchfromorder(orderid);
+                txtCustomerId.Text = db.Rows[0][0].ToString();
+                prevcusid = db.Rows[0][0].ToString();
+                txtCustomerName.Text = db.Rows[0][1].ToString();
+                btndelete.Visible = false;
+                btnUpdate.Visible = false;
+                txtCustomerName.ReadOnly = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void frmSalesDetails_Load(object sender, EventArgs e)
         {
             try
@@ -181,6 +204,11 @@ namespace MdProject
                 MessageBox.Show("Deleted Successfully");
                 this.Close();
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

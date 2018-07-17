@@ -61,6 +61,18 @@
     <Compile Include="classSalesBilling.cs" />
     <Compile Include="classStocksQuery.cs" />
     <Compile Include="clsConnection.cs" />
+    <Compile Include="CustomerCreditReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerCreditReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="expdatereport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>expdatereport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -87,6 +99,24 @@
     <Compile Include="frmCustomer.Designer.cs">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCustomerCreditViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomerCreditViewReport.Designer.cs">
+      <DependentUpon>frmCustomerCreditViewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCustomerReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomerReports.Designer.cs">
+      <DependentUpon>frmCustomerReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExpireDateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExpireDateReport.Designer.cs">
+      <DependentUpon>frmExpireDateReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +141,12 @@
     <Compile Include="frmReturns.Designer.cs">
       <DependentUpon>frmReturns.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReturnsUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReturnsUpdate.Designer.cs">
+      <DependentUpon>frmReturnsUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSalesDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,11 +159,29 @@
     <Compile Include="frmSalesInvoice.Designer.cs">
       <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalesReport.Designer.cs">
+      <DependentUpon>frmSalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalesReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalesReportView.Designer.cs">
+      <DependentUpon>frmSalesReportView.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSalesUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSalesUpdate.Designer.cs">
       <DependentUpon>frmSalesUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockreport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockreport.Designer.cs">
+      <DependentUpon>frmStockreport.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStocks.cs">
       <SubType>Form</SubType>
@@ -140,6 +194,12 @@
     </Compile>
     <Compile Include="frmUpdateStock.Designer.cs">
       <DependentUpon>frmUpdateStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homedarkbg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="homedarkbg.Designer.cs">
+      <DependentUpon>homedarkbg.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +215,20 @@
       <DependentUpon>SalesInvoice.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="salesViewReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>salesViewReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="CustomerCreditReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerCreditReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="expdatereport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>expdatereport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddCustomer.resx">
       <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +237,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCustomerCreditViewReport.resx">
+      <DependentUpon>frmCustomerCreditViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCustomerReports.resx">
+      <DependentUpon>frmCustomerReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExpireDateReport.resx">
+      <DependentUpon>frmExpireDateReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -176,20 +259,35 @@
     <EmbeddedResource Include="frmReturns.resx">
       <DependentUpon>frmReturns.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReturnsUpdate.resx">
+      <DependentUpon>frmReturnsUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSalesDetails.resx">
       <DependentUpon>frmSalesDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSalesInvoice.resx">
       <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSalesReport.resx">
+      <DependentUpon>frmSalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalesReportView.resx">
+      <DependentUpon>frmSalesReportView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSalesUpdate.resx">
       <DependentUpon>frmSalesUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStockreport.resx">
+      <DependentUpon>frmStockreport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStocks.resx">
       <DependentUpon>frmStocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateStock.resx">
       <DependentUpon>frmUpdateStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="homedarkbg.resx">
+      <DependentUpon>homedarkbg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -207,6 +305,10 @@
     <EmbeddedResource Include="SalesInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesInvoice.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="salesViewReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>salesViewReport.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
@@ -270,6 +372,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SidePanel-new.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\homedark.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

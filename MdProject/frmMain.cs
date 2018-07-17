@@ -96,7 +96,7 @@ namespace MdProject
         // ***Auto hide code for side panel
         //
         private void btnSidePannelView_Click(object sender, EventArgs e) => pnlSidePanel.Visible = true;
-        private void pnlSidePanel_MouseLeave(object sender, EventArgs e) => pnlSidePanel.Visible = false;
+         private void frmMain_MouseEnter(object sender, EventArgs e) => pnlSidePanel.Visible = false;
         //
         //
         // ***Close button code:
@@ -107,7 +107,23 @@ namespace MdProject
         // ***Miniize button code:
         //
         private void btnMinimize_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
-        
 
+        private void btnSalesReports_Click(object sender, EventArgs e)
+        {
+            frmSalesReport frs = new frmSalesReport();
+            frs.ShowDialog();
+        }
+
+        private void btnStocksReport_Click(object sender, EventArgs e)
+        {
+            frmStockreport frs = new frmStockreport();
+            frs.ShowDialog();
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            frmCustomerReports frc = new frmCustomerReports();
+            frc.ShowDialog();
+        }
     }
 }
