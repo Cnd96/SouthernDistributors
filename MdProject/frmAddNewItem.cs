@@ -34,6 +34,7 @@ namespace MdProject
                 txtItemId.Text = "";
                 txtItemDesc.Text = "";
                 txtItemName.Text = "";
+                MessageBox.Show("Item has successfuly added");
             }
             catch(SqlException sex)
             {

@@ -37,8 +37,12 @@
             this.btnSalesUpdate = new System.Windows.Forms.Button();
             this.btnSidePannelView = new System.Windows.Forms.Button();
             this.pnlSidePanel = new System.Windows.Forms.Panel();
+            this.btnCustomer = new System.Windows.Forms.Button();
+            this.btnStocksReport = new System.Windows.Forms.Button();
+            this.btnSalesReports = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
+            this.pnlSidePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOrder
@@ -48,7 +52,7 @@
             this.btnOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOrder.FlatAppearance.BorderSize = 0;
             this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrder.Location = new System.Drawing.Point(553, 390);
+            this.btnOrder.Location = new System.Drawing.Point(550, 393);
             this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(133, 123);
@@ -65,7 +69,7 @@
             this.btnsales.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnsales.FlatAppearance.BorderSize = 0;
             this.btnsales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnsales.Location = new System.Drawing.Point(733, 516);
+            this.btnsales.Location = new System.Drawing.Point(731, 518);
             this.btnsales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnsales.Name = "btnsales";
             this.btnsales.Size = new System.Drawing.Size(133, 123);
@@ -82,7 +86,7 @@
             this.btncustomers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btncustomers.FlatAppearance.BorderSize = 0;
             this.btncustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncustomers.Location = new System.Drawing.Point(1249, 516);
+            this.btncustomers.Location = new System.Drawing.Point(1247, 516);
             this.btncustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btncustomers.Name = "btncustomers";
             this.btncustomers.Size = new System.Drawing.Size(133, 123);
@@ -99,7 +103,7 @@
             this.btnReturns.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReturns.FlatAppearance.BorderSize = 0;
             this.btnReturns.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReturns.Location = new System.Drawing.Point(990, 378);
+            this.btnReturns.Location = new System.Drawing.Point(987, 387);
             this.btnReturns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReturns.Name = "btnReturns";
             this.btnReturns.Size = new System.Drawing.Size(133, 123);
@@ -118,10 +122,10 @@
             this.btnStocksview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStocksview.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStocksview.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnStocksview.Location = new System.Drawing.Point(496, 921);
+            this.btnStocksview.Location = new System.Drawing.Point(648, 914);
             this.btnStocksview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStocksview.Name = "btnStocksview";
-            this.btnStocksview.Size = new System.Drawing.Size(200, 37);
+            this.btnStocksview.Size = new System.Drawing.Size(220, 60);
             this.btnStocksview.TabIndex = 2;
             this.btnStocksview.Text = "Stock Update";
             this.btnStocksview.UseVisualStyleBackColor = false;
@@ -136,12 +140,12 @@
             this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayment.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayment.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPayment.Location = new System.Drawing.Point(850, 921);
+            this.btnPayment.Location = new System.Drawing.Point(927, 914);
             this.btnPayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(200, 37);
+            this.btnPayment.Size = new System.Drawing.Size(220, 60);
             this.btnPayment.TabIndex = 3;
-            this.btnPayment.Text = "Payments";
+            this.btnPayment.Text = "Credit Payments";
             this.btnPayment.UseVisualStyleBackColor = false;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
@@ -154,10 +158,10 @@
             this.btnSalesUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalesUpdate.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSalesUpdate.Location = new System.Drawing.Point(1209, 921);
+            this.btnSalesUpdate.Location = new System.Drawing.Point(1214, 914);
             this.btnSalesUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalesUpdate.Name = "btnSalesUpdate";
-            this.btnSalesUpdate.Size = new System.Drawing.Size(200, 37);
+            this.btnSalesUpdate.Size = new System.Drawing.Size(220, 60);
             this.btnSalesUpdate.TabIndex = 4;
             this.btnSalesUpdate.Text = "Sales Update";
             this.btnSalesUpdate.UseVisualStyleBackColor = false;
@@ -186,13 +190,57 @@
             // 
             this.pnlSidePanel.BackgroundImage = global::MdProject.Properties.Resources.SidePanel_new;
             this.pnlSidePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlSidePanel.Location = new System.Drawing.Point(3, 196);
+            this.pnlSidePanel.Controls.Add(this.btnCustomer);
+            this.pnlSidePanel.Controls.Add(this.btnStocksReport);
+            this.pnlSidePanel.Controls.Add(this.btnSalesReports);
+            this.pnlSidePanel.Location = new System.Drawing.Point(-2, 44);
             this.pnlSidePanel.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSidePanel.Name = "pnlSidePanel";
-            this.pnlSidePanel.Size = new System.Drawing.Size(376, 910);
+            this.pnlSidePanel.Size = new System.Drawing.Size(377, 1062);
             this.pnlSidePanel.TabIndex = 6;
             this.pnlSidePanel.Visible = false;
-            this.pnlSidePanel.MouseLeave += new System.EventHandler(this.pnlSidePanel_MouseLeave);
+            // 
+            // btnCustomer
+            // 
+            this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCustomer.Location = new System.Drawing.Point(73, 430);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Size = new System.Drawing.Size(240, 60);
+            this.btnCustomer.TabIndex = 2;
+            this.btnCustomer.Text = "Customers";
+            this.btnCustomer.UseVisualStyleBackColor = false;
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
+            // 
+            // btnStocksReport
+            // 
+            this.btnStocksReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.btnStocksReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStocksReport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStocksReport.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnStocksReport.Location = new System.Drawing.Point(73, 331);
+            this.btnStocksReport.Name = "btnStocksReport";
+            this.btnStocksReport.Size = new System.Drawing.Size(240, 60);
+            this.btnStocksReport.TabIndex = 1;
+            this.btnStocksReport.Text = "Stock";
+            this.btnStocksReport.UseVisualStyleBackColor = false;
+            this.btnStocksReport.Click += new System.EventHandler(this.btnStocksReport_Click);
+            // 
+            // btnSalesReports
+            // 
+            this.btnSalesReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.btnSalesReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesReports.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalesReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalesReports.Location = new System.Drawing.Point(73, 225);
+            this.btnSalesReports.Name = "btnSalesReports";
+            this.btnSalesReports.Size = new System.Drawing.Size(240, 60);
+            this.btnSalesReports.TabIndex = 0;
+            this.btnSalesReports.Text = "Sales";
+            this.btnSalesReports.UseVisualStyleBackColor = false;
+            this.btnSalesReports.Click += new System.EventHandler(this.btnSalesReports_Click);
             // 
             // btnClose
             // 
@@ -204,10 +252,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnClose.Location = new System.Drawing.Point(1887, 0);
+            this.btnClose.Location = new System.Drawing.Point(1883, -2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(36, 42);
+            this.btnClose.Size = new System.Drawing.Size(36, 50);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "x";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -224,10 +272,10 @@
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinimize.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMinimize.Location = new System.Drawing.Point(1851, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(1847, -2);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(0);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(36, 42);
+            this.btnMinimize.Size = new System.Drawing.Size(36, 50);
             this.btnMinimize.TabIndex = 7;
             this.btnMinimize.Text = "_";
             this.btnMinimize.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -240,7 +288,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MdProject.Properties.Resources.home_new;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1924, 1084);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlSidePanel);
@@ -254,13 +302,14 @@
             this.Controls.Add(this.btnOrder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(4000, 4000);
             this.Name = "frmMain";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MD Agency";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.MouseEnter += new System.EventHandler(this.frmMain_MouseEnter);
+            this.pnlSidePanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -278,6 +327,9 @@
         private System.Windows.Forms.Panel pnlSidePanel;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMinimize;
+        private System.Windows.Forms.Button btnStocksReport;
+        private System.Windows.Forms.Button btnSalesReports;
+        private System.Windows.Forms.Button btnCustomer;
     }
 }
 

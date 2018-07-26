@@ -146,8 +146,6 @@ namespace MdProject
                 string query2 = "UPDATE itembatch SET  Quantity=Quantity+" +txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "'";
                 clsConnection.SendQuery(query2);
 
-                string query3 = "UPDATE orderdetails SET  Qty=Qty-" + txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "' and orderid='"+txtOrderId.Text+"'";
-                clsConnection.SendQuery(query3);
                 
 
                 if (amountPayingBack >= creditamount)
@@ -176,6 +174,47 @@ namespace MdProject
                         ((TextBox)c).Text = String.Empty;
                     }
                 }
+            }
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOrderId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtItemId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtBatchID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
             }
         }
     }
