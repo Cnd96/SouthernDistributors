@@ -93,31 +93,35 @@
             // 
             // txtItemcategory
             // 
+            this.txtItemcategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemcategory.Location = new System.Drawing.Point(240, 237);
             this.txtItemcategory.Name = "txtItemcategory";
-            this.txtItemcategory.Size = new System.Drawing.Size(118, 23);
+            this.txtItemcategory.Size = new System.Drawing.Size(118, 27);
             this.txtItemcategory.TabIndex = 2;
             // 
             // txtQuantity
             // 
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.Location = new System.Drawing.Point(240, 367);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(118, 23);
+            this.txtQuantity.Size = new System.Drawing.Size(118, 27);
             this.txtQuantity.TabIndex = 4;
             // 
             // txtItemDesc
             // 
+            this.txtItemDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemDesc.Location = new System.Drawing.Point(240, 302);
             this.txtItemDesc.Name = "txtItemDesc";
-            this.txtItemDesc.Size = new System.Drawing.Size(118, 23);
+            this.txtItemDesc.Size = new System.Drawing.Size(118, 27);
             this.txtItemDesc.TabIndex = 3;
             // 
             // txtItemId
             // 
+            this.txtItemId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemId.Location = new System.Drawing.Point(240, 107);
             this.txtItemId.Name = "txtItemId";
             this.txtItemId.ReadOnly = true;
-            this.txtItemId.Size = new System.Drawing.Size(118, 23);
+            this.txtItemId.Size = new System.Drawing.Size(118, 27);
             this.txtItemId.TabIndex = 0;
             // 
             // lblQuantity
@@ -177,10 +181,11 @@
             // 
             // txtBatchId
             // 
+            this.txtBatchId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBatchId.Location = new System.Drawing.Point(240, 172);
             this.txtBatchId.Name = "txtBatchId";
             this.txtBatchId.ReadOnly = true;
-            this.txtBatchId.Size = new System.Drawing.Size(118, 23);
+            this.txtBatchId.Size = new System.Drawing.Size(118, 27);
             this.txtBatchId.TabIndex = 1;
             // 
             // lblSelling
@@ -196,9 +201,10 @@
             // 
             // txtselling
             // 
+            this.txtselling.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtselling.Location = new System.Drawing.Point(240, 431);
             this.txtselling.Name = "txtselling";
-            this.txtselling.Size = new System.Drawing.Size(118, 23);
+            this.txtselling.Size = new System.Drawing.Size(118, 27);
             this.txtselling.TabIndex = 5;
             // 
             // lblExpire
@@ -214,9 +220,10 @@
             // 
             // txtExpire
             // 
+            this.txtExpire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExpire.Location = new System.Drawing.Point(240, 496);
             this.txtExpire.Name = "txtExpire";
-            this.txtExpire.Size = new System.Drawing.Size(118, 23);
+            this.txtExpire.Size = new System.Drawing.Size(118, 27);
             this.txtExpire.TabIndex = 6;
             // 
             // label3

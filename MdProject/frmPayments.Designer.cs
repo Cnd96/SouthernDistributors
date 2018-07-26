@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvPaymentView = new System.Windows.Forms.DataGridView();
             this.txtPaymentId = new System.Windows.Forms.TextBox();
             this.lblPayment = new System.Windows.Forms.Label();
@@ -54,14 +54,14 @@
             this.dgvPaymentView.AllowUserToResizeRows = false;
             this.dgvPaymentView.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvPaymentView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPaymentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentView.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvPaymentView.Location = new System.Drawing.Point(103, 369);
@@ -208,7 +208,7 @@
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(712, 18);
+            this.lblDate.Location = new System.Drawing.Point(700, 108);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(45, 20);
             this.lblDate.TabIndex = 183;
@@ -222,9 +222,9 @@
             this.lblOrder.ForeColor = System.Drawing.Color.Teal;
             this.lblOrder.Location = new System.Drawing.Point(41, 9);
             this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(446, 96);
+            this.lblOrder.Size = new System.Drawing.Size(740, 96);
             this.lblOrder.TabIndex = 184;
-            this.lblOrder.Text = "PAYMENTS";
+            this.lblOrder.Text = "CREDIT PAYMENTS";
             // 
             // frmPayments
             // 

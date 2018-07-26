@@ -125,7 +125,7 @@ namespace MdProject
                 bll.quantity = float.Parse(txtQuantity.Text);
                 if (dateTimePicker1.Value <= DateTime.Today)
                 {
-                    throw new Exception("Enter a valid date");
+                    throw new Exception("Enter a valid Expire date");
                 }
                 x = 2;
             }
@@ -329,6 +329,11 @@ namespace MdProject
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             dgvStockView.DataSource = classOrderQuery.itemsearchall();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

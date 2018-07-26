@@ -471,6 +471,12 @@ namespace MdProject
                 try
                 {
                     dgvStockView.DataSource = ClassSaleQuery.itemsSearch();
+                    string query = "select top 1 orderid from orderbill order by orderid desc";
+                    DataTable db = new DataTable();
+                    db = clsConnection.GetData(query);
+                    string OrderId = db.Rows[0][0].ToString();
+                    int newOrdId = Int32.Parse(OrderId) + 1;
+                    txtOrderId.Text = newOrdId.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -596,6 +602,18 @@ namespace MdProject
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtFreeItems_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
         }
     }
 }

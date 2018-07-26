@@ -70,11 +70,24 @@ namespace MdProject
                 dgvPaymentView.Columns[1].HeaderText = "Customer Name";
                 dgvPaymentView.Columns[2].HeaderText = "Date";
                 dgvPaymentView.Columns[3].HeaderText = "Amount";
-
+                
                 DataTable db1 = new DataTable();
+                string query2 = "select orderid from orderbill where customerid  ='" + cusid + "'";
+                db1= clsConnection.GetData(query2);
+                string ordid = db1.Rows[0][0].ToString();
+
+                dgvReturnView.DataSource = classReturnQuery.returndetails(ordid);
+                dgvReturnView.Columns[0].HeaderText = "Return ID";
+                dgvReturnView.Columns[1].HeaderText = "Order ID";
+                dgvReturnView.Columns[2].HeaderText = "Item ID";
+                dgvReturnView.Columns[3].HeaderText = "Batch ID";
+                dgvReturnView.Columns[4].HeaderText = "Quantity";
+                dgvReturnView.Columns[5].HeaderText = "Date";
+                dgvReturnView.Columns[5].HeaderText = "Amount";
+                DataTable db2 = new DataTable();
                 string query1 = "select creditvalue from customer where customername  ='" + txtCusName.Text + "'";
-                db1 = clsConnection.GetData(query1);
-                txtcredit.Text = db1.Rows[0][0].ToString();
+                db2 = clsConnection.GetData(query1);
+                txtcredit.Text = db2.Rows[0][0].ToString();
 
             }
             catch (Exception ex)

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStockView = new System.Windows.Forms.DataGridView();
             this.cmbItemDesc = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -76,32 +76,32 @@
             this.dgvStockView.AllowUserToResizeRows = false;
             this.dgvStockView.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dgvStockView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GreenYellow;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.GreenYellow;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStockView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvStockView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockView.GridColor = System.Drawing.Color.LightSteelBlue;
-            this.dgvStockView.Location = new System.Drawing.Point(49, 305);
+            this.dgvStockView.Location = new System.Drawing.Point(96, 331);
             this.dgvStockView.Name = "dgvStockView";
             this.dgvStockView.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStockView.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvStockView.RowHeadersVisible = false;
             this.dgvStockView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvStockView.RowTemplate.Height = 24;
             this.dgvStockView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockView.Size = new System.Drawing.Size(538, 487);
+            this.dgvStockView.Size = new System.Drawing.Size(549, 487);
             this.dgvStockView.TabIndex = 6;
             this.dgvStockView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockView_CellDoubleClick);
             // 
@@ -153,7 +153,7 @@
             // txtCostPerUnit
             // 
             this.txtCostPerUnit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCostPerUnit.Location = new System.Drawing.Point(789, 674);
+            this.txtCostPerUnit.Location = new System.Drawing.Point(801, 674);
             this.txtCostPerUnit.Name = "txtCostPerUnit";
             this.txtCostPerUnit.Size = new System.Drawing.Size(149, 22);
             this.txtCostPerUnit.TabIndex = 3;
@@ -162,7 +162,7 @@
             // txtSellingPrice
             // 
             this.txtSellingPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSellingPrice.Location = new System.Drawing.Point(789, 613);
+            this.txtSellingPrice.Location = new System.Drawing.Point(801, 613);
             this.txtSellingPrice.Name = "txtSellingPrice";
             this.txtSellingPrice.Size = new System.Drawing.Size(149, 22);
             this.txtSellingPrice.TabIndex = 2;
@@ -171,7 +171,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtQuantity.Location = new System.Drawing.Point(789, 552);
+            this.txtQuantity.Location = new System.Drawing.Point(801, 552);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(149, 22);
             this.txtQuantity.TabIndex = 1;
@@ -180,7 +180,7 @@
             // txtBatchId
             // 
             this.txtBatchId.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtBatchId.Location = new System.Drawing.Point(789, 491);
+            this.txtBatchId.Location = new System.Drawing.Point(801, 491);
             this.txtBatchId.Name = "txtBatchId";
             this.txtBatchId.Size = new System.Drawing.Size(149, 22);
             this.txtBatchId.TabIndex = 122;
@@ -190,7 +190,7 @@
             this.lblItemDesc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblItemDesc.BackColor = System.Drawing.SystemColors.Window;
             this.lblItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItemDesc.Location = new System.Drawing.Point(789, 429);
+            this.lblItemDesc.Location = new System.Drawing.Point(801, 429);
             this.lblItemDesc.Name = "lblItemDesc";
             this.lblItemDesc.Size = new System.Drawing.Size(149, 23);
             this.lblItemDesc.TabIndex = 121;
@@ -200,7 +200,7 @@
             this.lblItemName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblItemName.BackColor = System.Drawing.SystemColors.Window;
             this.lblItemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItemName.Location = new System.Drawing.Point(789, 367);
+            this.lblItemName.Location = new System.Drawing.Point(801, 367);
             this.lblItemName.Name = "lblItemName";
             this.lblItemName.Size = new System.Drawing.Size(149, 23);
             this.lblItemName.TabIndex = 120;
@@ -210,7 +210,7 @@
             this.lblItemId.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblItemId.BackColor = System.Drawing.SystemColors.Window;
             this.lblItemId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItemId.Location = new System.Drawing.Point(789, 305);
+            this.lblItemId.Location = new System.Drawing.Point(801, 305);
             this.lblItemId.Name = "lblItemId";
             this.lblItemId.Size = new System.Drawing.Size(149, 23);
             this.lblItemId.TabIndex = 119;
@@ -233,9 +233,9 @@
             this.Costlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Costlbl.Location = new System.Drawing.Point(613, 671);
             this.Costlbl.Name = "Costlbl";
-            this.Costlbl.Size = new System.Drawing.Size(170, 28);
+            this.Costlbl.Size = new System.Drawing.Size(196, 28);
             this.Costlbl.TabIndex = 117;
-            this.Costlbl.Text = "Cost per unit      ";
+            this.Costlbl.Text = "Cost per unit      Rs:";
             // 
             // label5
             // 
@@ -244,9 +244,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(613, 610);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(170, 28);
+            this.label5.Size = new System.Drawing.Size(196, 28);
             this.label5.TabIndex = 116;
-            this.label5.Text = "Selling Price      ";
+            this.label5.Text = "Selling Price      Rs:";
             // 
             // label3
             // 
@@ -255,9 +255,10 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(613, 549);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 28);
+            this.label3.Size = new System.Drawing.Size(186, 28);
             this.label3.TabIndex = 115;
-            this.label3.Text = "Quantity order   ";
+            this.label3.Text = "Quantity Received ";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -300,16 +301,16 @@
             this.dgvBillView.AllowUserToResizeRows = false;
             this.dgvBillView.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dgvBillView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBillView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBillView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvBillView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBillView.Location = new System.Drawing.Point(930, 305);
+            this.dgvBillView.Location = new System.Drawing.Point(944, 331);
             this.dgvBillView.Name = "dgvBillView";
             this.dgvBillView.ReadOnly = true;
             this.dgvBillView.RowHeadersVisible = false;
@@ -321,8 +322,8 @@
             // 
             // txtAmount
             // 
-            this.txtAmount.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txtAmount.Location = new System.Drawing.Point(1025, 806);
+            this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAmount.Location = new System.Drawing.Point(1026, 835);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(116, 22);
             this.txtAmount.TabIndex = 129;
@@ -338,16 +339,16 @@
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(180, 60);
             this.btnOrder.TabIndex = 8;
-            this.btnOrder.Text = "Order";
+            this.btnOrder.Text = "Update Stocks";
             this.btnOrder.UseVisualStyleBackColor = false;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // totallbl
             // 
-            this.totallbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.totallbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.totallbl.AutoSize = true;
             this.totallbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totallbl.Location = new System.Drawing.Point(939, 806);
+            this.totallbl.Location = new System.Drawing.Point(940, 835);
             this.totallbl.Name = "totallbl";
             this.totallbl.Size = new System.Drawing.Size(56, 25);
             this.totallbl.TabIndex = 132;
@@ -462,9 +463,9 @@
             this.lblOrder.ForeColor = System.Drawing.Color.Teal;
             this.lblOrder.Location = new System.Drawing.Point(66, 40);
             this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(311, 96);
+            this.lblOrder.Size = new System.Drawing.Size(590, 96);
             this.lblOrder.TabIndex = 177;
-            this.lblOrder.Text = "ORDER";
+            this.lblOrder.Text = "STOCK ORDER";
             // 
             // frmOrder
             // 

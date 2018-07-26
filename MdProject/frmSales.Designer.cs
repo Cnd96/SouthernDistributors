@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStockView = new System.Windows.Forms.DataGridView();
             this.lblSearch = new System.Windows.Forms.Label();
             this.cmbItemName = new System.Windows.Forms.ComboBox();
@@ -88,14 +88,14 @@
             this.dgvStockView.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dgvStockView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvStockView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStockView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStockView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockView.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvStockView.Location = new System.Drawing.Point(27, 272);
@@ -133,12 +133,13 @@
             // txtFreeItems
             // 
             this.txtFreeItems.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtFreeItems.Location = new System.Drawing.Point(701, 674);
+            this.txtFreeItems.Location = new System.Drawing.Point(711, 674);
             this.txtFreeItems.Name = "txtFreeItems";
             this.txtFreeItems.ReadOnly = true;
             this.txtFreeItems.Size = new System.Drawing.Size(135, 22);
             this.txtFreeItems.TabIndex = 3;
             this.txtFreeItems.TextChanged += new System.EventHandler(this.txtFreeItems_TextChanged);
+            this.txtFreeItems.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFreeItems_KeyPress);
             // 
             // label9
             // 
@@ -156,7 +157,7 @@
             this.lblQtyAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblQtyAvailable.BackColor = System.Drawing.SystemColors.Window;
             this.lblQtyAvailable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblQtyAvailable.Location = new System.Drawing.Point(698, 558);
+            this.lblQtyAvailable.Location = new System.Drawing.Point(708, 558);
             this.lblQtyAvailable.Name = "lblQtyAvailable";
             this.lblQtyAvailable.Size = new System.Drawing.Size(138, 23);
             this.lblQtyAvailable.TabIndex = 156;
@@ -168,7 +169,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(522, 555);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(170, 28);
+            this.label8.Size = new System.Drawing.Size(207, 28);
             this.label8.TabIndex = 155;
             this.label8.Text = "Quantity available      :";
             // 
@@ -191,7 +192,7 @@
             // 
             this.checkboxItem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkboxItem.AutoSize = true;
-            this.checkboxItem.Location = new System.Drawing.Point(701, 735);
+            this.checkboxItem.Location = new System.Drawing.Point(711, 735);
             this.checkboxItem.Name = "checkboxItem";
             this.checkboxItem.Size = new System.Drawing.Size(18, 17);
             this.checkboxItem.TabIndex = 4;
@@ -212,7 +213,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtQuantity.Location = new System.Drawing.Point(701, 613);
+            this.txtQuantity.Location = new System.Drawing.Point(711, 613);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(135, 22);
             this.txtQuantity.TabIndex = 2;
@@ -226,16 +227,16 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(522, 611);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 28);
+            this.label3.Size = new System.Drawing.Size(207, 28);
             this.label3.TabIndex = 150;
-            this.label3.Text = "Quantity             ";
+            this.label3.Text = "Quantity  Ordering";
             // 
             // lblSellingPrice
             // 
             this.lblSellingPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSellingPrice.BackColor = System.Drawing.SystemColors.Window;
             this.lblSellingPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSellingPrice.Location = new System.Drawing.Point(698, 503);
+            this.lblSellingPrice.Location = new System.Drawing.Point(708, 503);
             this.lblSellingPrice.Name = "lblSellingPrice";
             this.lblSellingPrice.Size = new System.Drawing.Size(138, 23);
             this.lblSellingPrice.TabIndex = 149;
@@ -257,7 +258,7 @@
             this.lblBatchId.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblBatchId.BackColor = System.Drawing.SystemColors.Window;
             this.lblBatchId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblBatchId.Location = new System.Drawing.Point(698, 448);
+            this.lblBatchId.Location = new System.Drawing.Point(708, 448);
             this.lblBatchId.Name = "lblBatchId";
             this.lblBatchId.Size = new System.Drawing.Size(138, 23);
             this.lblBatchId.TabIndex = 147;
@@ -267,7 +268,7 @@
             this.lblExpireDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblExpireDate.BackColor = System.Drawing.SystemColors.Window;
             this.lblExpireDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblExpireDate.Location = new System.Drawing.Point(698, 393);
+            this.lblExpireDate.Location = new System.Drawing.Point(708, 393);
             this.lblExpireDate.Name = "lblExpireDate";
             this.lblExpireDate.Size = new System.Drawing.Size(138, 23);
             this.lblExpireDate.TabIndex = 146;
@@ -277,7 +278,7 @@
             this.lblItemDesc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblItemDesc.BackColor = System.Drawing.SystemColors.Window;
             this.lblItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItemDesc.Location = new System.Drawing.Point(698, 338);
+            this.lblItemDesc.Location = new System.Drawing.Point(708, 338);
             this.lblItemDesc.Name = "lblItemDesc";
             this.lblItemDesc.Size = new System.Drawing.Size(138, 23);
             this.lblItemDesc.TabIndex = 145;
@@ -287,7 +288,7 @@
             this.lblItemID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblItemID.BackColor = System.Drawing.SystemColors.Window;
             this.lblItemID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItemID.Location = new System.Drawing.Point(698, 272);
+            this.lblItemID.Location = new System.Drawing.Point(708, 272);
             this.lblItemID.Name = "lblItemID";
             this.lblItemID.Size = new System.Drawing.Size(138, 23);
             this.lblItemID.TabIndex = 144;
@@ -344,14 +345,14 @@
             this.dgvBill.AllowUserToResizeRows = false;
             this.dgvBill.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dgvBill.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvBill.Location = new System.Drawing.Point(820, 272);
@@ -371,7 +372,7 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSubmit.Location = new System.Drawing.Point(996, 837);
+            this.btnSubmit.Location = new System.Drawing.Point(1211, 837);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(180, 60);
             this.btnSubmit.TabIndex = 11;
@@ -506,7 +507,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(1455, 837);
+            this.btnDelete.Location = new System.Drawing.Point(1451, 837);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(180, 60);
             this.btnDelete.TabIndex = 160;

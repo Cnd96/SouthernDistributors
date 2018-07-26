@@ -98,6 +98,7 @@
             this.txtOrderId.Name = "txtOrderId";
             this.txtOrderId.Size = new System.Drawing.Size(100, 22);
             this.txtOrderId.TabIndex = 1;
+            this.txtOrderId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOrderId_KeyPress);
             // 
             // txtItemId
             // 
@@ -106,6 +107,7 @@
             this.txtItemId.Name = "txtItemId";
             this.txtItemId.Size = new System.Drawing.Size(100, 22);
             this.txtItemId.TabIndex = 2;
+            this.txtItemId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemId_KeyPress);
             // 
             // txtBatchID
             // 
@@ -114,6 +116,7 @@
             this.txtBatchID.Name = "txtBatchID";
             this.txtBatchID.Size = new System.Drawing.Size(100, 22);
             this.txtBatchID.TabIndex = 3;
+            this.txtBatchID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBatchID_KeyPress);
             // 
             // btnEnter
             // 

@@ -181,6 +181,13 @@ namespace MdProject
                 }
             }
 
+            dgvPaymentView.DataSource = ClassPayments.PaymentSearch();
+            dgvPaymentView.Columns[0].HeaderText = "Payment ID";
+            dgvPaymentView.Columns[1].HeaderText = "Customer Id";
+            dgvPaymentView.Columns[2].HeaderText = "Customer Name";
+            dgvPaymentView.Columns[3].HeaderText = "Date";
+            dgvPaymentView.Columns[4].HeaderText = "Amount";
+
         }
 
         private void txtAmountPaying_TextChanged(object sender, EventArgs e)

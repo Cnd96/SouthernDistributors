@@ -37,11 +37,11 @@
             this.btnSalesUpdate = new System.Windows.Forms.Button();
             this.btnSidePannelView = new System.Windows.Forms.Button();
             this.pnlSidePanel = new System.Windows.Forms.Panel();
+            this.btnCustomer = new System.Windows.Forms.Button();
             this.btnStocksReport = new System.Windows.Forms.Button();
             this.btnSalesReports = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnCustomer = new System.Windows.Forms.Button();
             this.pnlSidePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,7 +145,7 @@
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(220, 60);
             this.btnPayment.TabIndex = 3;
-            this.btnPayment.Text = "Payments";
+            this.btnPayment.Text = "Credit Payments";
             this.btnPayment.UseVisualStyleBackColor = false;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
@@ -200,13 +200,27 @@
             this.pnlSidePanel.TabIndex = 6;
             this.pnlSidePanel.Visible = false;
             // 
+            // btnCustomer
+            // 
+            this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCustomer.Location = new System.Drawing.Point(73, 430);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Size = new System.Drawing.Size(240, 60);
+            this.btnCustomer.TabIndex = 2;
+            this.btnCustomer.Text = "Customers";
+            this.btnCustomer.UseVisualStyleBackColor = false;
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
+            // 
             // btnStocksReport
             // 
             this.btnStocksReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
             this.btnStocksReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStocksReport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStocksReport.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnStocksReport.Location = new System.Drawing.Point(73, 303);
+            this.btnStocksReport.Location = new System.Drawing.Point(73, 331);
             this.btnStocksReport.Name = "btnStocksReport";
             this.btnStocksReport.Size = new System.Drawing.Size(240, 60);
             this.btnStocksReport.TabIndex = 1;
@@ -267,16 +281,6 @@
             this.btnMinimize.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
-            // btnCustomer
-            // 
-            this.btnCustomer.Location = new System.Drawing.Point(149, 431);
-            this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(119, 23);
-            this.btnCustomer.TabIndex = 2;
-            this.btnCustomer.Text = "Customers";
-            this.btnCustomer.UseVisualStyleBackColor = true;
-            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // frmMain
             // 
