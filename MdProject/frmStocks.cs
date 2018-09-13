@@ -22,7 +22,7 @@ namespace MdProject
             DataTable db = new DataTable();
             try
             {
-                dgvstockView.DataSource = classStocksQuery.itemsSearch();
+                dgvstockView.DataSource = classStocks.itemsSearch();
                 dgvstockView.Columns[0].HeaderText = "Item ID";
                 dgvstockView.Columns[1].HeaderText = "Batch ID";
                 dgvstockView.Columns[2].HeaderText = "Item Category";
@@ -53,7 +53,7 @@ namespace MdProject
         {
             try
             {
-                dgvstockView.DataSource =classStocksQuery.wildCardDescription(cmbStockSelect.Text);
+                dgvstockView.DataSource =classStocks.wildCardDescription(cmbStockSelect.Text);
             }
             catch (Exception ex)
             {

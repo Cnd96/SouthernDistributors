@@ -26,7 +26,7 @@ namespace MdProject
             {
                 DataTable db = new DataTable();
 
-                dgvStockView.DataSource = ClassSaleQuery.itemsSearch();
+                dgvStockView.DataSource = ClassSales.itemsSearch();
                 dgvStockView.Columns[0].HeaderText = "Item ID";
                 dgvStockView.Columns[1].HeaderText = "Batch ID";
                 dgvStockView.Columns[2].HeaderText = "Item Name";
@@ -96,7 +96,7 @@ namespace MdProject
         {
             try
             {
-                dgvStockView.DataSource = ClassSaleQuery.wildCardItemName(cmbItemName.Text);
+                dgvStockView.DataSource = ClassSales.wildCardItemName(cmbItemName.Text);
 
             }
             catch (Exception ex)
@@ -422,7 +422,7 @@ namespace MdProject
                     {
                         check = 1;
                     }
-                    int insertorderbill = ClassSaleQuery.insertToOrderbill(txtOrderId.Text, txtCustomerId.Text, DateLbl.Text, float.Parse(txtaAmount.Text) - bill.amounttobepay, bill.amounttobepay, bill.amountpay, bill.credit, float.Parse(txtDiscount.Text));
+                    int insertorderbill = ClassSales.insertToOrderbill(txtOrderId.Text, txtCustomerId.Text, DateLbl.Text, float.Parse(txtaAmount.Text) - bill.amounttobepay, bill.amounttobepay, bill.amountpay, bill.credit, float.Parse(txtDiscount.Text));
                     string query = "UPDATE customer SET creditvalue=creditvalue+" + bill.credit + " where customerID ='" + txtCustomerId.Text + "'";
                     clsConnection.SendQuery(query);
 
@@ -435,7 +435,7 @@ namespace MdProject
                 {
                     try
                     {
-                        int insertOrderDetails = ClassSaleQuery.insertToOrderDetails(txtOrderId.Text, dgvBill.Rows[i].Cells[0].Value.ToString(), dgvBill.Rows[i].Cells[1].Value.ToString(), Int32.Parse(dgvBill.Rows[i].Cells[3].Value.ToString()), Int32.Parse(dgvBill.Rows[i].Cells[4].Value.ToString()), float.Parse(dgvBill.Rows[i].Cells[6].Value.ToString()));
+                        int insertOrderDetails = ClassSales.insertToOrderDetails(txtOrderId.Text, dgvBill.Rows[i].Cells[0].Value.ToString(), dgvBill.Rows[i].Cells[1].Value.ToString(), Int32.Parse(dgvBill.Rows[i].Cells[3].Value.ToString()), Int32.Parse(dgvBill.Rows[i].Cells[4].Value.ToString()), float.Parse(dgvBill.Rows[i].Cells[6].Value.ToString()));
 
                         int purchseamnt = Int32.Parse(dgvBill.Rows[i].Cells[3].Value.ToString()) + Int32.Parse(dgvBill.Rows[i].Cells[4].Value.ToString());
 
@@ -470,7 +470,13 @@ namespace MdProject
                     DataTable db1 = new DataTable();
                 try
                 {
-                    dgvStockView.DataSource = ClassSaleQuery.itemsSearch();
+                    dgvStockView.DataSource = ClassSales.itemsSearch();
+                    string query = "select top 1 orderid from orderbill order by orderid desc";
+                    DataTable db = new DataTable();
+                    db = clsConnection.GetData(query);
+                    string OrderId = db.Rows[0][0].ToString();
+                    int newOrdId = Int32.Parse(OrderId) + 1;
+                    txtOrderId.Text = newOrdId.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -588,6 +594,23 @@ namespace MdProject
 
             }
             if (e.KeyChar == (char)Keys.Delete || e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFreeItems_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
             {
                 e.Handled = false;
             }

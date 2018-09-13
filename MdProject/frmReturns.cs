@@ -38,8 +38,8 @@ namespace MdProject
                 if (txtBatchID.Text == "") throw new Exception("Enter Batch Id");
                 DataTable db1 = new DataTable();
                 DataTable db2 = new DataTable();
-                db1 = classReturnQuery.customerdetails(txtOrderId.Text);
-                db2 = classReturnQuery.orderdetails(txtOrderId.Text, txtItemId.Text, txtBatchID.Text);
+                db1 = classReturns.customerdetails(txtOrderId.Text);
+                db2 = classReturns.orderdetails(txtOrderId.Text, txtItemId.Text, txtBatchID.Text);
                 txtCustomerId.Text = db1.Rows[0][0].ToString();
                 txtCustomerName.Text = db1.Rows[0][1].ToString();
                 txtCreditValue.Text = db1.Rows[0][2].ToString();
@@ -138,7 +138,7 @@ namespace MdProject
                 amountPayingBack = quantityreturn * sellingprice * (100 - float.Parse(txtdiscountPercentage.Text)) / 100;
                 float creditamount = float.Parse(txtCreditValue.Text);
 
-                int inserttoreturn = classReturnQuery.inserttoreturns(txtReturnId.Text ,txtOrderId.Text,txtItemId.Text,txtBatchID.Text , Int32.Parse(txtQuantityReturn.Text),lblDate.Text,amountPayingBack);
+                int inserttoreturn = classReturns.inserttoreturns(txtReturnId.Text ,txtOrderId.Text,txtItemId.Text,txtBatchID.Text , Int32.Parse(txtQuantityReturn.Text),lblDate.Text,amountPayingBack);
 
                 string query1 = "UPDATE item SET Qty=Qty+" + txtQuantityReturn.Text + " where ItemID ='" + txtItemId.Text + "'";
                 clsConnection.SendQuery(query1);
@@ -146,8 +146,6 @@ namespace MdProject
                 string query2 = "UPDATE itembatch SET  Quantity=Quantity+" +txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "'";
                 clsConnection.SendQuery(query2);
 
-                string query3 = "UPDATE orderdetails SET  Qty=Qty-" + txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "' and orderid='"+txtOrderId.Text+"'";
-                clsConnection.SendQuery(query3);
                 
 
                 if (amountPayingBack >= creditamount)
@@ -176,6 +174,47 @@ namespace MdProject
                         ((TextBox)c).Text = String.Empty;
                     }
                 }
+            }
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOrderId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtItemId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtBatchID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
             }
         }
     }

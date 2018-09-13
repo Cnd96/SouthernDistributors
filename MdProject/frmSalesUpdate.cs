@@ -20,7 +20,7 @@ namespace MdProject
         private void txtSalesId_TextChanged(object sender, EventArgs e)
         {
             try {
-                dgvsalesview.DataSource = ClassSaleQuery.wildcardsalesdetailsSearch(txtSalesId.Text);
+                dgvsalesview.DataSource = ClassSales.wildcardsalesdetailsSearch(txtSalesId.Text);
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -31,7 +31,7 @@ namespace MdProject
         {
             try
             {
-                dgvsalesview.DataSource = ClassSaleQuery.salesdetailsSearch();
+                dgvsalesview.DataSource = ClassSales.salesdetailsSearch();
             dgvsalesview.Columns[0].HeaderText = "Sales ID";
             dgvsalesview.Columns[1].HeaderText = "Customer Name";
             dgvsalesview.Columns[2].HeaderText = "Date";
@@ -63,6 +63,11 @@ namespace MdProject
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lblOrder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

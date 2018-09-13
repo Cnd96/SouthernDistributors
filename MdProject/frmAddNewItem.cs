@@ -30,10 +30,11 @@ namespace MdProject
                 if (txtItemName.Text == "") throw  new Exception("Enter an Item Name.");
                 if (txtItemDesc.Text == "") throw new Exception("Enter an Item Description.");
 
-                int insertitem = classOrderQuery.insertToItem(txtItemId.Text, txtItemName.Text, txtItemDesc.Text);
+                int insertitem = classOrder.insertToItem(txtItemId.Text, txtItemName.Text, txtItemDesc.Text);
                 txtItemId.Text = "";
                 txtItemDesc.Text = "";
                 txtItemName.Text = "";
+                MessageBox.Show("Item has successfuly added");
             }
             catch(SqlException sex)
             {

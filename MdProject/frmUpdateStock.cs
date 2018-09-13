@@ -47,7 +47,7 @@ namespace MdProject
             int y=0;
             if (result == DialogResult.Yes)
             {
-                 y = classStocksQuery.deleteItem(txtItemId.Text, txtBatchId.Text, Int32.Parse(txtQuantity.Text));
+                 y = classStocks.deleteItem(txtItemId.Text, txtBatchId.Text, Int32.Parse(txtQuantity.Text));
                 if(y==1)
                 MessageBox.Show("Deleted SuccessFully.");
             }
@@ -68,7 +68,7 @@ namespace MdProject
             int y = 0;
             if (result == DialogResult.Yes)
             {
-                y = classStocksQuery.UpdateItem(txtItemId.Text, txtBatchId.Text, Int32.Parse(txtQuantity.Text),float.Parse(txtselling.Text),txtExpire.Text,txtItemcategory.Text,txtItemDesc.Text,quantitydiff);
+                y = classStocks.UpdateItem(txtItemId.Text, txtBatchId.Text, Int32.Parse(txtQuantity.Text),float.Parse(txtselling.Text),txtExpire.Text,txtItemcategory.Text,txtItemDesc.Text,quantitydiff);
                 if (y == 1)
                     MessageBox.Show("Updated SuccessFully.");
             }
