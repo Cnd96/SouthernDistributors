@@ -12,24 +12,65 @@ namespace MdProject
 {
     public partial class frmUpdateStock : Form
     {
+        int orgquantity = 0;
+
+
         public frmUpdateStock()
         {
             InitializeComponent();
         }
-        int orgquantity=0;
-        public frmUpdateStock(string iid,string bid, string icategory, string iname, string quantity, string selling, string expdate)
-        {
-            InitializeComponent();
-            txtItemId.Text = iid;
-            txtBatchId.Text = bid;
-            txtItemcategory.Text = icategory;
-            txtItemDesc.Text = iname;
-            txtQuantity.Text = quantity;
-            txtselling.Text = selling;
-            txtExpire.Text = expdate;
-            orgquantity = Int32.Parse(quantity);
 
+        public string itemId
+        {
+            set
+            {
+                txtItemId.Text = value;
+            }
         }
+        public string batchId
+        {
+            set
+            {
+                txtBatchId.Text = value;
+            }
+        }
+
+        public string itemCategory
+        {
+            set
+            {
+                txtItemcategory.Text = value;
+            }
+        }
+        public string quantity
+        {
+            set
+            {
+                txtQuantity.Text = value;
+            }
+        }
+        public string itemName
+        {
+            set
+            {
+                txtItemDesc.Text = value;
+            }
+        }
+        public string sellingPrice
+        {
+            set
+            {
+                txtselling.Text = value + 10000;
+            }
+        }
+        public string expDate
+        {
+            set
+            {
+                txtExpire.Text = value;
+            }
+        }
+
 
         private void closebtn_Click(object sender, EventArgs e)
         {

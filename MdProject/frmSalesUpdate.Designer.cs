@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSalesId = new System.Windows.Forms.Label();
             this.txtSalesId = new System.Windows.Forms.TextBox();
             this.dgvsalesview = new System.Windows.Forms.DataGridView();
@@ -62,14 +62,14 @@
             this.dgvsalesview.AllowUserToResizeColumns = false;
             this.dgvsalesview.AllowUserToResizeRows = false;
             this.dgvsalesview.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvsalesview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvsalesview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvsalesview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvsalesview.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvsalesview.Location = new System.Drawing.Point(60, 257);
@@ -81,6 +81,7 @@
             this.dgvsalesview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvsalesview.Size = new System.Drawing.Size(963, 499);
             this.dgvsalesview.TabIndex = 180;
+            this.dgvsalesview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvsalesview_CellContentClick);
             this.dgvsalesview.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvsalesview_CellDoubleClick);
             // 
             // lblOrder

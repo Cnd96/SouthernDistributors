@@ -77,8 +77,16 @@ namespace MdProject
                 string sellprice = selectedrow.Cells[5].Value.ToString();
                 string exp = selectedrow.Cells[6].Value.ToString();
 
-
-                frmUpdateStock frmnew = new frmUpdateStock(iid,bid,icategory,iname,qty,sellprice,exp);
+                var frmnew = new frmUpdateStock
+                {
+                    itemId = iid,
+                    batchId = bid,
+                    itemCategory = icategory,
+                    itemName = iname,
+                    quantity = qty,
+                    sellingPrice = sellprice,
+                    expDate = exp
+                };
                 frmnew.ShowDialog();
             }
             catch (ArgumentOutOfRangeException)
@@ -90,6 +98,11 @@ namespace MdProject
             }
 
            
+        }
+
+        private void dgvstockView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

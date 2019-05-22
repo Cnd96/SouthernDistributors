@@ -54,6 +54,17 @@ namespace MdProject
             int result = clsConnection.SendQuery(query);
             return result;
         }
-        
+        public static int insertpurchaseDetails(string pid, string iid, string bid,int quantity)
+        {
+            string query = "insert into purchasedetails values ( '" + pid + "', '" + iid + "', '" + bid + "', " + quantity + "); ";
+            int result = clsConnection.SendQuery(query);
+            return result;
+        }
+        public static int insertTopurchase(string pid, string date, float amount)
+        {
+            string query = "insert into purchase values ( '" + pid + "', '" + date + "', " + amount + "); ";
+            int result = clsConnection.SendQuery(query);
+            return result;
+        }
     }
 }

@@ -53,9 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classCustomers.cs" />
-    <Compile Include="classOrderBill.cs" />
-    <Compile Include="classOrder.cs" />
+    <Compile Include="classItemBatch.cs" />
+    <Compile Include="classItems.cs" />
+    <Compile Include="classOrderValidate.cs" />
     <Compile Include="ClassPayments.cs" />
+    <Compile Include="classPurchaseDetails.cs" />
+    <Compile Include="classPurchases.cs" />
     <Compile Include="classReturns.cs" />
     <Compile Include="ClassSales.cs" />
     <Compile Include="classSalesBilling.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MdProject
 {
-    class classOrderBill
+    class classOrderValidate
     {
 
         string iid;

@@ -69,5 +69,10 @@ namespace MdProject
         {
 
         }
+
+        private void dgvsalesview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

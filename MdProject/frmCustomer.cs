@@ -19,7 +19,7 @@ namespace MdProject
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            dgvCustomerlist.DataSource = classCustomers.customersearchall();
+            dgvCustomerlist.DataSource = classCustomers.getAllCustomers();
             dgvCustomerlist.Columns[0].HeaderText = "Customer ID";
             dgvCustomerlist.Columns[1].HeaderText = "Customer Name";
             dgvCustomerlist.Columns[2].HeaderText = "Contact no";
@@ -109,7 +109,7 @@ namespace MdProject
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            dgvCustomerlist.DataSource = classCustomers.customersearchall();
+            dgvCustomerlist.DataSource = classCustomers.getAllCustomers();
         }
     }
 }

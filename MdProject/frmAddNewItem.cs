@@ -17,7 +17,7 @@ namespace MdProject
             InitializeComponent();
         }
         
-            private void closebtn_Click(object sender, EventArgs e)
+        private void closebtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -30,16 +30,25 @@ namespace MdProject
                 if (txtItemName.Text == "") throw  new Exception("Enter an Item Name.");
                 if (txtItemDesc.Text == "") throw new Exception("Enter an Item Description.");
 
-                int insertitem = classOrder.insertToItem(txtItemId.Text, txtItemName.Text, txtItemDesc.Text);
+                var item = new classItems
+                {
+                    iId= txtItemId.Text,
+                    iName= txtItemName.Text,
+                    iDescription= txtItemDesc.Text,
+                    iQuantity=0
+                };
+                int updatecustomer = item.insertToItem(item);
+
+              
                 txtItemId.Text = "";
                 txtItemDesc.Text = "";
                 txtItemName.Text = "";
                 MessageBox.Show("Item has successfuly added");
             }
-            catch(SqlException sex)
+            catch(SqlException sqle)
             {
                 clsConnection.connectionclose();
-                MessageBox.Show(sex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Item ID taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {              
@@ -57,14 +66,6 @@ namespace MdProject
             txtItemId.Text = newIId.ToString();
         }
 
-        private void lblQuantity_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtQuantity_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -11,7 +11,6 @@ namespace MdProject
     {
         public static DataTable customerdetails(string oid)
         {
-            string cus = "Cus1001";
             DataTable db = new DataTable();
             string query = "Select c.customerid, c.customername, c.creditvalue , o.DiscountPercentage from customer c inner join orderbill o on o.customerid=c.customerid where o.orderid='"+oid+"'";
             db = clsConnection.GetData(query);
@@ -33,8 +32,7 @@ namespace MdProject
             DataTable db = new DataTable();
             string query = "select r.returnid,r.orderid,r.ItemId,r.BatchId,r.Qty,r.Date,r.AmountOfReturns from returns r inner join orderbill o on o.OrderID=r.OrderId where o.orderid ='" + oid + "'";
             db = clsConnection.GetData(query);
-            db = clsConnection.GetData(query);
-
+            
             return db;
         }
         public static int inserttoreturns(string rid,string oid, string iid, string bid, int quantity, string date, float amountofreturn)

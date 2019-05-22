@@ -24,18 +24,17 @@ namespace MdProject
 
         }
         DataTable table = new DataTable();
+        DataTable db;
         private void frmOrder_Load(object sender, EventArgs e)
         {
             try
             {
-                DataTable db = new DataTable();
-                string query = "select top 1 purchaseid from purchase order by  purchaseid desc";
-                db = clsConnection.GetData(query);
+                db = classPurchases.getTopPurchaseId();
                 string purchaseId = db.Rows[0][0].ToString();
                 int newpurchaseId = Int32.Parse(purchaseId) + 1;
                 txtPurchaseId.Text = newpurchaseId.ToString();
 
-                dgvStockView.DataSource = classOrder.itemsearchall();
+                dgvStockView.DataSource = classItems.itemsearchall();
                 dgvStockView.Columns[0].HeaderText = "Item ID";
                 dgvStockView.Columns[1].HeaderText = "Item Category";
                 dgvStockView.Columns[2].HeaderText = "Quantity";
@@ -55,13 +54,11 @@ namespace MdProject
             table.Columns.Add("Quantity", typeof(int));
             table.Columns.Add("Amount ", typeof(float));
             dgvBillView.DataSource = table;
-            stockcombofill();
+            stockcomboxfill();
         }
-        private void stockcombofill()
+        private void stockcomboxfill()
         {
-            string query ="Select ItemName from Item";
-            DataTable dbcombo = new DataTable();
-            dbcombo = clsConnection.GetData(query);
+            DataTable dbcombo = classItems.getItemName();
             foreach (DataRow dr in dbcombo.Rows)
             {
                 cmbItemDesc.Items.Add(dr["ItemName"].ToString());
@@ -77,22 +74,22 @@ namespace MdProject
 
                 DataGridViewRow selectedrow = dgvStockView.Rows[index];
                 String IID = selectedrow.Cells[0].Value.ToString();
-                DataTable db = new DataTable();
-                DataTable db1 = new DataTable();
-                string query = "select * from Item where ItemID ='" + IID + "'";
-                string query1 = "select top 1 batchid from itembatchid where itemid="+IID+" order by itemid desc ";
-                db1= clsConnection.GetData(query1);
-                db = clsConnection.GetData(query);
-                DateTime date = DateTime.Now;
+                
+                db = classItems.getItem(IID);
                 lblItemId.Text = db.Rows[0][0].ToString();
                 lblItemName.Text = db.Rows[0][1].ToString();
                 lblItemDesc.Text = db.Rows[0][3].ToString();
-                txtBatchId.Text = (Int32.Parse(db1.Rows[0][0].ToString())+1).ToString();
+
+                db= classItems.getTopBatchId(IID);
+
+                DateTime date = DateTime.Now;
+                
+                txtBatchId.Text = (Int32.Parse(db.Rows[0][0].ToString())+1).ToString();
             }
             catch (ArgumentOutOfRangeException)
             {
             }
-            catch (IndexOutOfRangeException sex)
+            catch (IndexOutOfRangeException iex)
             {
                 txtBatchId.Text = "1";
             }
@@ -106,7 +103,7 @@ namespace MdProject
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             int x = 1;
-            classOrderBill bll = new classOrderBill();
+            classOrderValidate bll = new classOrderValidate();
 
             try
             {
@@ -243,7 +240,7 @@ namespace MdProject
         {
             try
             {
-                dgvStockView.DataSource = classOrder.wildCardDescription(cmbItemDesc.Text);             
+                dgvStockView.DataSource = classItems.wildCardDescription(cmbItemDesc.Text);             
             }
             catch (Exception ex)
             {
@@ -262,7 +259,7 @@ namespace MdProject
                     String IID = selectedrow.Cells[0].Value.ToString();
 
                     DataTable db1 = new DataTable();
-                    db1 = classOrder.itemSelectItemId(IID);
+                    db1 = classItems.getItem(IID);
                     DateTime date = DateTime.Now;
                     lblItemId.Text = db1.Rows[0][0].ToString();
                     lblItemName.Text = db1.Rows[0][1].ToString();
@@ -282,21 +279,19 @@ namespace MdProject
                     string format = dgvBillView.Rows[i].Cells[2].Value.ToString();
                     DateTime dt = Convert.ToDateTime(format);
                     string date = dt.ToString("MM-d-yyyy");
+                    string IID = dgvBillView.Rows[i].Cells[0].Value.ToString();
 
-                    int insertBatchItem = classOrder.insertToBatchItem(dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString());
-                    int insertBatch = classOrder.insertToBatch(dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString(), float.Parse(dgvBillView.Rows[i].Cells[3].Value.ToString()), date, Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()), float.Parse(dgvBillView.Rows[i].Cells[4].Value.ToString()));
-                    int insertopurchasedetails = classOrder.insertpurchaseDetails(txtPurchaseId.Text, dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString(), Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()));
-                    string IID =dgvBillView.Rows[i].Cells[0].Value.ToString();
+                    int insertBatchItem = classItemBatch.insertToBatchItem(dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString());
+                    int insertBatch = classItemBatch.insertToBatch(dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString(), float.Parse(dgvBillView.Rows[i].Cells[3].Value.ToString()), date, Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()), float.Parse(dgvBillView.Rows[i].Cells[4].Value.ToString()));
+                    int insertopurchasedetails = classPurchaseDetails.insertpurchaseDetails(txtPurchaseId.Text, dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString(), Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()));
+                    int updateItemQuantity = classItems.updateItemQuantity(IID, Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()));
 
-                    string query = "UPDATE item SET Qty=Qty+"+ Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()) + " where ItemID ='" + IID + "'";
-                    clsConnection.SendQuery(query);
-                    
                 }
-                catch(SqlException sexc)
+                catch(SqlException sqle)
                 {
                     clsConnection.connectionclose();
                     MessageBox.Show("Enter an Item only once", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    MessageBox.Show(sexc.Message);
+                    MessageBox.Show(sqle.Message);
                 }
                 catch (Exception ex)
                 {
@@ -305,10 +300,8 @@ namespace MdProject
             }
             try
             {
-                int insertPurchase = classOrder.insertTopurchase(txtPurchaseId.Text, lblDate.Text, float.Parse(txtAmount.Text));
-                DataTable db = new DataTable();
-                string query = "select top 1 purchaseid from purchase order by  purchaseid desc";
-                db = clsConnection.GetData(query);
+                int insertPurchase = classPurchases.insertTopurchase(txtPurchaseId.Text, lblDate.Text, float.Parse(txtAmount.Text));
+                DataTable db = classPurchases.getTopPurchaseId();
                 string purchaseId = db.Rows[0][0].ToString();
                 int newpurchaseId = Int32.Parse(purchaseId) + 1;
                 txtPurchaseId.Text = newpurchaseId.ToString();
@@ -323,15 +316,20 @@ namespace MdProject
             {
                 dgvBillView.Rows.RemoveAt(i);
             }
-            dgvStockView.DataSource = classOrder.itemsearchall();
+            dgvStockView.DataSource = classItems.itemsearchall();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            dgvStockView.DataSource = classOrder.itemsearchall();
+            dgvStockView.DataSource = classItems.itemsearchall();
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbItemDesc_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
