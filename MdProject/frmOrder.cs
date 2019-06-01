@@ -34,7 +34,7 @@ namespace MdProject
                 int newpurchaseId = Int32.Parse(purchaseId) + 1;
                 txtPurchaseId.Text = newpurchaseId.ToString();
 
-                dgvStockView.DataSource = classItems.itemsearchall();
+                dgvStockView.DataSource = Items.itemsearchall();
                 dgvStockView.Columns[0].HeaderText = "Item ID";
                 dgvStockView.Columns[1].HeaderText = "Item Category";
                 dgvStockView.Columns[2].HeaderText = "Quantity";
@@ -58,7 +58,7 @@ namespace MdProject
         }
         private void stockcomboxfill()
         {
-            DataTable dbcombo = classItems.getItemName();
+            DataTable dbcombo = Items.getItemName();
             foreach (DataRow dr in dbcombo.Rows)
             {
                 cmbItemDesc.Items.Add(dr["ItemName"].ToString());
@@ -75,12 +75,12 @@ namespace MdProject
                 DataGridViewRow selectedrow = dgvStockView.Rows[index];
                 String IID = selectedrow.Cells[0].Value.ToString();
                 
-                db = classItems.getItem(IID);
+                db = Items.getItem(IID);
                 lblItemId.Text = db.Rows[0][0].ToString();
                 lblItemName.Text = db.Rows[0][1].ToString();
                 lblItemDesc.Text = db.Rows[0][3].ToString();
 
-                db= classItems.getTopBatchId(IID);
+                db= classBatch.getTopBatchId(IID);
 
                 DateTime date = DateTime.Now;
                 
@@ -240,7 +240,7 @@ namespace MdProject
         {
             try
             {
-                dgvStockView.DataSource = classItems.wildCardDescription(cmbItemDesc.Text);             
+                dgvStockView.DataSource = Items.wildCardDescription(cmbItemDesc.Text);             
             }
             catch (Exception ex)
             {
@@ -259,7 +259,7 @@ namespace MdProject
                     String IID = selectedrow.Cells[0].Value.ToString();
 
                     DataTable db1 = new DataTable();
-                    db1 = classItems.getItem(IID);
+                    db1 = Items.getItem(IID);
                     DateTime date = DateTime.Now;
                     lblItemId.Text = db1.Rows[0][0].ToString();
                     lblItemName.Text = db1.Rows[0][1].ToString();
@@ -281,10 +281,26 @@ namespace MdProject
                     string date = dt.ToString("MM-d-yyyy");
                     string IID = dgvBillView.Rows[i].Cells[0].Value.ToString();
 
-                    int insertBatchItem = classItemBatch.insertToBatchItem(dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString());
-                    int insertBatch = classItemBatch.insertToBatch(dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString(), float.Parse(dgvBillView.Rows[i].Cells[3].Value.ToString()), date, Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()), float.Parse(dgvBillView.Rows[i].Cells[4].Value.ToString()));
-                    int insertopurchasedetails = classPurchaseDetails.insertpurchaseDetails(txtPurchaseId.Text, dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString(), Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()));
-                    int updateItemQuantity = classItems.updateItemQuantity(IID, Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()));
+                    var itemBatch = new classBatch
+                    {
+                        itemid = dgvBillView.Rows[i].Cells[0].Value.ToString(),
+                        batchid= dgvBillView.Rows[i].Cells[1].Value.ToString(),
+                        sellingprice= float.Parse(dgvBillView.Rows[i].Cells[3].Value.ToString()),
+                        expireDate= date,
+                        itemquantity= Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()),
+                        costperunit= float.Parse(dgvBillView.Rows[i].Cells[4].Value.ToString())
+                    };
+                    int inserttoItemBatch = itemBatch.insertToItemBatch(itemBatch);
+                    //int inserttoItemBatchId = itemBatch.insertToBatchItemID(itemBatch);
+
+                    int insertopurchasedetails = classPurchaseBatch.insertpurchaseDetails(txtPurchaseId.Text, dgvBillView.Rows[i].Cells[0].Value.ToString(), dgvBillView.Rows[i].Cells[1].Value.ToString(), Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString()));
+
+                    var item = new Items
+                    {
+                        iId=IID,
+                        iQuantity= Int32.Parse(dgvBillView.Rows[i].Cells[5].Value.ToString())
+                    };
+                    int updateItemQuantity =item.updateItemQuantity(item);
 
                 }
                 catch(SqlException sqle)
@@ -316,12 +332,12 @@ namespace MdProject
             {
                 dgvBillView.Rows.RemoveAt(i);
             }
-            dgvStockView.DataSource = classItems.itemsearchall();
+            dgvStockView.DataSource = Items.itemsearchall();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            dgvStockView.DataSource = classItems.itemsearchall();
+            dgvStockView.DataSource = Items.itemsearchall();
         }
 
         private void label3_Click(object sender, EventArgs e)

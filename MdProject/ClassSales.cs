@@ -8,43 +8,135 @@ namespace MdProject
 {
     class ClassSales
     {
-        public static DataTable itemsSearch()
+        static DataTable db;
+        string orderID;
+        string customerId;
+        string Date;  
+        float creditValue;
+        float Discount;
+        float amountToBePaid;
+        float amountPaid;
+        float discountPercentage;
+        float Total;
+
+        public string orderid
+        {
+            get { return orderID; }
+            set
+            {
+                if (value == "") throw new Exception("Enter Order ID");
+                orderID = value;
+            }
+        }
+        public string customerid
+        {
+            get { return customerId; }
+            set
+            {
+                if (value == "") throw new Exception("Enter Customer ID");
+                customerId = value;
+            }
+        }
+        public string date
+        {
+            get { return Date; }
+            set
+            {
+                Date = value;
+            }
+        }
+        public static DataTable getTopSalesId()
         {
 
-            DataTable db = new DataTable();
-            string query = "Select ib.itemid , ib.batchid, i.itemname , ib.quantity from itembatch ib inner join item i on ib.itemid=i.itemid  where ib.quantity>0 order by ib.itemid asc";
+            string query = "select top 1 orderid from sales order by orderid desc";
             db = clsConnection.GetData(query);
 
             return db;
         }
-
-        public static DataTable wildCardItemName(string itemcombotext)
+        public float creditvalue
         {
-
-            DataTable db = new DataTable();
-            string query = "Select ib.itemid , ib.batchid, i.itemname , ib.quantity from itembatch ib inner join item i on ib.itemid=i.itemid  where ib.quantity>0 and itemname LIKE '%" + itemcombotext + "%'";
-            db = clsConnection.GetData(query);
-
-            return db;
+            get { return creditValue; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Credit value cannot be negative.");
+                }
+                creditValue = value;
+            }
         }
-        public static int insertToOrderbill(string oid, string cid, string date, float discount, float amnttobepaid,float amntpaid,float credit,float dispercen)
+        public float discount
         {
-            string query = "INSERT INTO orderbill VALUES  ( '" + oid + "','" + cid + "','" + date + "', " + discount + ", " + amnttobepaid + ", " + amntpaid + ", " + credit + ", " + dispercen + ", " + (amnttobepaid+ discount) + ");";
+            get { return Discount; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Discount amount cannot be negative.");
+                }
+                Discount = value;
+            }
+        }
+        public float amountobepaid
+        {
+            get { return amountToBePaid; }
+            set
+            {
+                amountToBePaid = value;
+            }
+        }
+        public float amountpaid
+        {
+            get { return amountPaid; }
+            set
+            {
+                amountPaid = value;
+            }
+        }
+        public float discountpercentage
+        {
+            get { return discountPercentage; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Discount percentage cannot be negative.");
+                }
+                discountPercentage = value;
+            }
+        }
+        public float total
+        {
+            get { return Total; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Total amount cannot be negative.");
+                }
+                Total = value;
+            }
+        }
+
+
+        public  int insertSale(ClassSales sale)
+        {
+            string query = "INSERT INTO sales VALUES  ( '" + sale.orderid + "','" + sale.customerid + "','" + sale.date + "', " + sale.discount + ", " + sale.amountobepaid + ", " + sale.amountpaid + ", " + sale.creditvalue + ", " + sale.discountpercentage + ", " + sale.total  + ");";
             int result = clsConnection.SendQuery(query);
             return result;
         }
         public static int insertToOrderDetails(string oid, string iid, string bid, int quantity, int discountItems,float amount)
         {
            
-            string query = "INSERT INTO orderdetails VALUES  ( '" + oid + "','" + iid + "','" + bid + "', " + quantity + ", " + discountItems + ", " + amount + ");";
+            string query = "INSERT INTO SalesBatch VALUES  ( '" + oid + "','" + iid + "','" + bid + "', " + quantity + ", " + discountItems + ", " + amount + ");";
             int result = clsConnection.SendQuery(query);
             return result;
         }
         public static DataTable salesdetailsSearch()
         {
 
-            DataTable db = new DataTable();
-            string query = "Select ob.orderid, c.customername, ob.date, ob.amounttobepaid, ob.amountpaid, ob.creditvalue, ob.discountpercentage from orderbill ob inner join customer c on c.customerid=ob.customerid ";
+   
+            string query = "Select s.orderid, c.customername, s.date, s.amounttobepaid, s.amountpaid, s.creditvalue, s.discountpercentage from sales s inner join customer c on c.customerid=s.customerid ";
             db = clsConnection.GetData(query);
 
             return db;
@@ -52,8 +144,8 @@ namespace MdProject
         public static DataTable salesdetailsSearch2(string cid)
         {
 
-            DataTable db = new DataTable();
-            string query = "Select ob.orderid, c.customername, ob.date, ob.amounttobepaid, ob.amountpaid, ob.creditvalue from orderbill ob inner join customer c on c.customerid=ob.customerid  where c.customerid='" + cid + "'";
+
+            string query = "Select s.orderid, c.customername, s.date, s.amounttobepaid, s.amountpaid, s.creditvalue from sales s inner join customer c on c.customerid=s.customerid  where c.customerid='" + cid + "'";
             db = clsConnection.GetData(query);
 
             return db;
@@ -61,8 +153,7 @@ namespace MdProject
         public static DataTable wildcardsalesdetailsSearch(string oid)
         {
 
-            DataTable db = new DataTable();
-            string query = "Select ob.orderid, c.customername,ob.date,ob.amounttobepaid,ob.amountpaid,ob.creditvalue,ob.discountpercentage from orderbill ob inner join customer c on c.customerid=ob.customerid where ob.orderid like '"+ oid+"%'";
+            string query = "Select s.orderid, c.customername,s.date,s.amounttobepaid,s.amountpaid,s.creditvalue,s.discountpercentage from sales s inner join customer c on c.customerid=s.customerid where s.orderid like '" + oid+"%'";
             db = clsConnection.GetData(query);
             
             return db;
@@ -70,17 +161,17 @@ namespace MdProject
         public static DataTable salesSearch()
         {
 
-            DataTable db = new DataTable();
+      
             string query = "Select od.itemid, od.batchid, i.itemname,od.qty,od.discoutnitems, ";
             db = clsConnection.GetData(query);
 
             return db;
         }
-        public static DataTable customersearchfromorder(string oid)
+        public static DataTable customersearchfromSales(string oid)
         {
 
-            DataTable db = new DataTable();
-            string query = "Select c.customerid ,c.customername from customer c inner join orderbill o on c.customerid=o.customerid where orderid='" + oid+"'";
+       
+            string query = "Select c.customerid ,c.customername from customer c inner join sales s on c.customerid=s.customerid where orderid='" + oid+"'";
             db = clsConnection.GetData(query);
 
             return db;
@@ -89,8 +180,7 @@ namespace MdProject
         public static DataTable salesUpdatebillsearch(string oid)
         {
 
-            DataTable db = new DataTable();
-            string query = "Select od.itemid,od.batchid,i.itemname,od.qty,od.discountitems from item i inner join orderdetails od on od.itemid=i.itemid where orderid='"+ oid +"'";
+            string query = "Select od.itemid,od.batchid,i.itemname,od.qty,od.discountitems from item i inner join SalesBatch od on od.itemid=i.itemid where orderid='" + oid +"'";
             db = clsConnection.GetData(query);
 
             return db;

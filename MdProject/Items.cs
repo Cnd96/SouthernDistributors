@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MdProject
 {
-    class classItems
+    class Items
     {
         static DataTable db = new DataTable();
         string itemID;
@@ -74,9 +74,17 @@ namespace MdProject
 
             return db;
         }
-        public static DataTable getTopBatchId(string itemID)
+        public static DataTable getTopItemId()
         {
-            string query = "select top 1 batchid from itembatchid where itemid=" + itemID + " order by itemid desc ";
+            string query = "select top 1 itemid from item order by itemid desc";
+            db = clsConnection.GetData(query);
+
+            return db;
+        }
+        public static DataTable wildCardItemName(string itemcombotext)
+        {
+
+            string query = "Select ib.itemid , ib.batchid, i.itemname , ib.quantity from batch ib inner join item i on ib.itemid=i.itemid  where ib.quantity>0 and itemname LIKE '%" + itemcombotext + "%'";
             db = clsConnection.GetData(query);
 
             return db;
@@ -88,15 +96,15 @@ namespace MdProject
 
             return db;
         }
-        public  int insertToItem(classItems item)
+        public  int insertToItem(Items item)
         {
             string query = "insert into Item values ( '" + item.itemID + "', '" + item.itemName + "', '"+item.itemQuantity+"','" + item.itemDescription + "'); ";
             int result = clsConnection.SendQuery(query);
             return result;
         }
-        public static int updateItemQuantity(string IID, int amount)
+        public int updateItemQuantity(Items item)
         {
-            string query = "UPDATE item SET Qty=Qty+" + amount + " where ItemID ='" + IID + "'";
+            string query = "UPDATE item SET Qty=Qty+" + item.itemQuantity + " where ItemID ='" + item.itemID + "'";
             int result = clsConnection.SendQuery(query);
             return result;
         }

@@ -13,7 +13,7 @@ namespace MdProject
 {
     public partial class frmPayments : Form
     {
-         SqlConnection con1 = new SqlConnection(@"Data Source=ASUS-CND\CHAMAL;Initial Catalog=MDProject;Integrated Security=True");
+         
         public frmPayments()
         {
             InitializeComponent();
@@ -25,23 +25,16 @@ namespace MdProject
         {
             try
             {
-                DataTable db = new DataTable();
-                string query = "select top 1 paymentid from payment order by paymentid desc";
-                db = clsConnection.GetData(query);
+                DataTable db = ClassPayments.getPaymentId();
                 string payId = db.Rows[0][0].ToString();
                 int npayId = Int32.Parse(payId) + 1;
                 txtPaymentId.Text = npayId.ToString();
 
-                SqlCommand cmd = new SqlCommand("select customername from customer",con1 );
-                con1.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-                while (dr.Read())
-                {
-                    collection.Add(dr.GetString(0));
-                }
+
+                AutoCompleteStringCollection collection = classCustomers.getAutoCompleteCustomersNames();
+                
                 txtCusName.AutoCompleteCustomSource = collection;
-                con1.Close();
+              
 
                 dgvPaymentView.DataSource = ClassPayments.PaymentSearch();
                 dgvPaymentView.Columns[0].HeaderText = "Payment ID";
@@ -66,9 +59,7 @@ namespace MdProject
         {
             try
             {
-                DataTable db = new DataTable();
-                string query = "select customerid,creditvalue from customer where customername  ='" + txtCusName.Text + "'";
-                db = clsConnection.GetData(query);
+                DataTable db = classCustomers.getCustomerCreditvalue(txtCusName.Text);
                 if(float.Parse(db.Rows[0][1].ToString())==0)
                 {
                     MessageBox.Show("No Credit value fo this customer.");
@@ -169,9 +160,17 @@ namespace MdProject
             }
             if (x == 2)
             {
-                int inserttopayments = ClassPayments.insertTopayment(txtPaymentId.Text,txtcusId.Text,lblDate.Text,float.Parse(txtAmountPaying.Text));
-                string query1 = "UPDATE customer SET creditvalue=creditvalue-" + txtAmountPaying.Text + " where customerID ='" + txtcusId.Text + "'";
-                clsConnection.SendQuery(query1);
+                var payement = new ClassPayments
+                {
+                    paymentid= txtPaymentId.Text,
+                    paymentdate= lblDate.Text,
+                    paymentamount= float.Parse(txtAmountPaying.Text),
+                    customerid= txtcusId.Text
+                };
+
+                int pay = payement.insertTopayment(payement);
+                int customer=classCustomers.updateCustomerCreditValue(txtAmountPaying.Text ,txtcusId.Text);
+               
                 foreach (var c in this.Controls)
                 {
                     if (c is TextBox)

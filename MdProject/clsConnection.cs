@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace MdProject
 {
@@ -39,6 +40,19 @@ namespace MdProject
             con.Close();
             return dt;
         }
-        
+        public static AutoCompleteStringCollection GetAutucompleteData(String Query)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand(Query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            while (dr.Read())
+            {
+                collection.Add(dr.GetString(0));
+            }
+            con.Close();
+            return collection;
+        }
+
     }
 }

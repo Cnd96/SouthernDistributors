@@ -21,9 +21,7 @@ namespace MdProject
 
         private void frmReturns_Load(object sender, EventArgs e)
         {
-            DataTable db = new DataTable();
-            string query = "select top 1 returnid from returns order by returnid desc";
-            db = clsConnection.GetData(query);
+            DataTable db = classReturns.getTopReturnId();
             string returnId = db.Rows[0][0].ToString();
             int newreturnId = Int32.Parse(returnId) + 1;
             txtReturnId.Text = newreturnId.ToString();
@@ -38,8 +36,10 @@ namespace MdProject
                 if (txtBatchID.Text == "") throw new Exception("Enter Batch Id");
                 DataTable db1 = new DataTable();
                 DataTable db2 = new DataTable();
-                db1 = classReturns.customerdetails(txtOrderId.Text);
-                db2 = classReturns.orderdetails(txtOrderId.Text, txtItemId.Text, txtBatchID.Text);
+
+
+                db1 = classCustomers.getCustomerDetailsOrder(txtOrderId.Text);
+                db2 = classSalesBatch.getOrderdetails(txtOrderId.Text, txtItemId.Text, txtBatchID.Text);
                 txtCustomerId.Text = db1.Rows[0][0].ToString();
                 txtCustomerName.Text = db1.Rows[0][1].ToString();
                 txtCreditValue.Text = db1.Rows[0][2].ToString();
@@ -122,9 +122,8 @@ namespace MdProject
 
             if (x == 2)
             {
-                DataTable db = new DataTable();
-                string query = "select sellingprice from itembatch where itemid='" + txtItemId.Text + "' and batchid='" + txtBatchID.Text + "'";
-                db = clsConnection.GetData(query);
+                DataTable db = classBatch.getSellingPrice(txtItemId.Text, txtBatchID.Text);
+                
                 float sellingprice = float.Parse(db.Rows[0][0].ToString());
 
                 int quantityreturn = Int32.Parse(txtQuantityReturn.Text);
@@ -140,31 +139,30 @@ namespace MdProject
 
                 int inserttoreturn = classReturns.inserttoreturns(txtReturnId.Text ,txtOrderId.Text,txtItemId.Text,txtBatchID.Text , Int32.Parse(txtQuantityReturn.Text),lblDate.Text,amountPayingBack);
 
-                string query1 = "UPDATE item SET Qty=Qty+" + txtQuantityReturn.Text + " where ItemID ='" + txtItemId.Text + "'";
-                clsConnection.SendQuery(query1);
-
-                string query2 = "UPDATE itembatch SET  Quantity=Quantity+" +txtQuantityReturn.Text + " where BatchID ='" + txtBatchID.Text + "' and itemid='" + txtItemId.Text + "'";
-                clsConnection.SendQuery(query2);
-
                 
+                var item = new Items
+                {
+                    iId = txtItemId.Text,
+                    iQuantity = Int32.Parse(txtQuantityReturn.Text)
+                };
+                int updateItemQuantity = item.updateItemQuantity(item);
 
+                int updateItemBatchQuantity = classBatch.updateItemBatchQuantity(txtQuantityReturn.Text, txtBatchID.Text, txtItemId.Text);
+                
                 if (amountPayingBack >= creditamount)
                 {
 
                     amountPayingBack = amountPayingBack - creditamount;
                     MessageBox.Show("Amount that should handover to customer Rs." + amountPayingBack);
-                    string query4 = "UPDATE customer SET creditvalue=" + 0 + " where customerID ='" + txtCustomerId.Text + "'";
+                    int updateCustomer = classCustomers.updateCustomerCreditValueOnReturns(0, txtCustomerId.Text);
                     
-                    clsConnection.SendQuery(query4);
                 }
                 else
                 {
                     creditamount = creditamount - amountPayingBack;
                     MessageBox.Show("New credit value of customer is Rs." + creditamount);
-                    string query5 = "UPDATE customer SET creditvalue=" + creditamount + " where customerID ='" + txtCustomerId.Text + "'";
-                    clsConnection.SendQuery(query5);
-
-                    
+                    int updateCustomer = classCustomers.updateCustomerCreditValueOnReturns(creditamount, txtCustomerId.Text);
+                                   
                 }
 
                 foreach (var c in this.Controls)

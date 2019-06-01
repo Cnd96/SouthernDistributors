@@ -20,7 +20,7 @@ namespace MdProject
             lblCredit.Visible = false;
             txtCustomerCredit.Visible = false;
 
-            DataTable db = classCustomers.getCustomerId();
+            DataTable db = classCustomers.getTopCustomerId();
             string CustomerId = db.Rows[0][0].ToString();
             string sub = CustomerId.Substring(3);
             int newCusId = Int32.Parse(sub)+1;

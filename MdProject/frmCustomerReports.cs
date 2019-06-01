@@ -65,7 +65,7 @@ namespace MdProject
                 dgvsalesview.Columns[4].HeaderText = "Amount paid";
                 dgvsalesview.Columns[5].HeaderText = "Balance";
 
-                dgvPaymentView.DataSource = ClassPayments.PaymentSearch2(cusid);
+                dgvPaymentView.DataSource = ClassPayments.customerPaymentSearch(cusid);
                 dgvPaymentView.Columns[0].HeaderText = "Payment ID";
                 dgvPaymentView.Columns[1].HeaderText = "Customer Name";
                 dgvPaymentView.Columns[2].HeaderText = "Date";

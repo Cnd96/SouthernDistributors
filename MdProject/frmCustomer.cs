@@ -30,9 +30,8 @@ namespace MdProject
         }
         private void customercombofill()
         {
-            string query = "Select customername from customer";
-            DataTable dbcombo = new DataTable();
-            dbcombo = clsConnection.GetData(query);
+            
+            DataTable dbcombo = classCustomers.getAllCustomersNames();
             foreach (DataRow dr in dbcombo.Rows)
             {
                 cmbCustomerSelect.Items.Add(dr["customername"].ToString());

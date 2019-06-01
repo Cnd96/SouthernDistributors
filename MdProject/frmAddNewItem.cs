@@ -30,7 +30,7 @@ namespace MdProject
                 if (txtItemName.Text == "") throw  new Exception("Enter an Item Name.");
                 if (txtItemDesc.Text == "") throw new Exception("Enter an Item Description.");
 
-                var item = new classItems
+                var item = new Items
                 {
                     iId= txtItemId.Text,
                     iName= txtItemName.Text,
@@ -58,9 +58,7 @@ namespace MdProject
 
         private void frmAddNewItem_Load(object sender, EventArgs e)
         {
-            DataTable db = new DataTable();
-            string query = "select top 1 itemid from item order by itemid desc";
-            db = clsConnection.GetData(query);
+            DataTable db = Items.getTopItemId();
             string itemId = db.Rows[0][0].ToString();
             int newIId = Int32.Parse(itemId) + 1;
             txtItemId.Text = newIId.ToString();

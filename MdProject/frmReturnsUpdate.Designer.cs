@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(1906, 1037);
             this.Name = "frmReturnsUpdate";
             this.Text = "frmReturnsUpdate";
+            this.Load += new System.EventHandler(this.frmReturnsUpdate_Load);
             this.ResumeLayout(false);
 
         }

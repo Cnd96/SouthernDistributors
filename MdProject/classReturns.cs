@@ -9,27 +9,21 @@ namespace MdProject
 {
     class classReturns
     {
-        public static DataTable customerdetails(string oid)
+        static DataTable db;
+
+        public static DataTable getTopReturnId()
         {
-            DataTable db = new DataTable();
-            string query = "Select c.customerid, c.customername, c.creditvalue , o.DiscountPercentage from customer c inner join orderbill o on o.customerid=c.customerid where o.orderid='"+oid+"'";
+
+            string query = "select top 1 returnid from returns order by returnid desc";
             db = clsConnection.GetData(query);
 
             return db;
         }
-        public static DataTable orderdetails(string oid, string iid, string bid)
-        {
 
-            DataTable db = new DataTable();
-            string query = "select qty,discountitems from orderdetails where orderid='"+oid+ "' and itemid='"+iid+"' and batchid='"+bid+"'";
-            db = clsConnection.GetData(query);
-
-            return db;
-        }
+        
         public static DataTable returndetails(string oid)
         {
 
-            DataTable db = new DataTable();
             string query = "select r.returnid,r.orderid,r.ItemId,r.BatchId,r.Qty,r.Date,r.AmountOfReturns from returns r inner join orderbill o on o.OrderID=r.OrderId where o.orderid ='" + oid + "'";
             db = clsConnection.GetData(query);
             

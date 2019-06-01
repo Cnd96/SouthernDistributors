@@ -16,5 +16,10 @@ namespace MdProject
         {
             InitializeComponent();
         }
+
+        private void frmReturnsUpdate_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

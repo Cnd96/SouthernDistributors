@@ -24,9 +24,9 @@ namespace MdProject
            
             try
             {
-                DataTable db = new DataTable();
+                
 
-                dgvStockView.DataSource = ClassSales.itemsSearch();
+                dgvStockView.DataSource = classBatch.getItemsAvailable();
                 dgvStockView.Columns[0].HeaderText = "Item ID";
                 dgvStockView.Columns[1].HeaderText = "Batch ID";
                 dgvStockView.Columns[2].HeaderText = "Item Name";
@@ -35,11 +35,17 @@ namespace MdProject
                 customernamefill();
                 DateTime date = DateTime.Now;
                 DateLbl.Text = date.ToString("MM-d-yyyy");
-                string query = "select top 1 orderid from orderbill order by orderid desc";
-                db = clsConnection.GetData(query);
+
+
+                DataTable db = ClassSales.getTopSalesId();
                 string OrderId = db.Rows[0][0].ToString();
                 int newOrdId = Int32.Parse(OrderId) + 1;
                 txtOrderId.Text = newOrdId.ToString();
+            }
+            catch (SqlException sqle)
+            {
+                clsConnection.connectionclose();
+              
             }
             catch (Exception ex)
             {
@@ -60,30 +66,22 @@ namespace MdProject
    
         private void stockcombofill()
         {
-            string query = "Select itemname from item";
-            DataTable dbcombo = new DataTable();
-            dbcombo = clsConnection.GetData(query);
+
+            DataTable dbcombo = Items.getItemName();
             foreach (DataRow dr in dbcombo.Rows)
             {
                 cmbItemName.Items.Add(dr["itemname"].ToString());
             }
         }
-        static SqlConnection con1 = new SqlConnection(@"Data Source=ASUS-CND\CHAMAL;Initial Catalog=MDProject;Integrated Security=True");
+       
         private void customernamefill()
         {
             try
             {
-                SqlConnection con1 = new SqlConnection(@"Data Source=ASUS-CND\CHAMAL;Initial Catalog=MDProject;Integrated Security=True");
-                SqlCommand cmd = new SqlCommand("select customername from customer", con1);
-                con1.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-                while (dr.Read())
-                {
-                    collection.Add(dr.GetString(0));
-                }
+                AutoCompleteStringCollection collection = classCustomers.getAutoCompleteCustomersNames();
+
                 txtCusName.AutoCompleteCustomSource = collection;
-                con1.Close();
+               
             }
             catch (Exception ex)
             {
@@ -96,7 +94,7 @@ namespace MdProject
         {
             try
             {
-                dgvStockView.DataSource = ClassSales.wildCardItemName(cmbItemName.Text);
+                dgvStockView.DataSource = Items.wildCardItemName(cmbItemName.Text);
 
             }
             catch (Exception ex)
@@ -121,12 +119,16 @@ namespace MdProject
                 lblItemDesc.Text = selectedrow.Cells[2].Value.ToString();
                 lblQtyAvailable.Text = selectedrow.Cells[3].Value.ToString();
 
-                DataTable db = new DataTable();
-                string query = "select sellingprice,expdate from itembatch where batchId='" + selectedrow.Cells[1].Value.ToString() + "' and itemid='" + selectedrow.Cells[0].Value.ToString() + "'";
-                db = clsConnection.GetData(query);
+                DataTable db = classBatch.getSellingPriceExpDate(selectedrow.Cells[0].Value.ToString(), selectedrow.Cells[1].Value.ToString());
+                
                 lblSellingPrice.Text = db.Rows[0][0].ToString();
                 lblExpireDate.Text = db.Rows[0][1].ToString();
                 batchquantityvar = Int32.Parse(selectedrow.Cells[3].Value.ToString());
+            }
+            catch (SqlException sqle)
+            {
+                clsConnection.connectionclose();
+
             }
             catch (ArgumentOutOfRangeException) {
             }
@@ -350,17 +352,7 @@ namespace MdProject
 
         private void txtCustomerId_TextChanged(object sender, EventArgs e)
         {
-            try
-            {             
-                DataTable db = new DataTable();
-                string query = "select customername from customer where customerid ='" + txtCustomerId.Text + "'";
-                db = clsConnection.GetData(query);
-                txtCusName.Text = db.Rows[0][0].ToString();
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-            }
+           
         }
 
         private void txtFreeItems_TextChanged(object sender, EventArgs e)
@@ -413,18 +405,25 @@ namespace MdProject
             {
                 try
                 {
-                    DataTable db = new DataTable();
-                    string query1 = "select creditvalue from customer where customerId='" + txtCustomerId.Text + "'";
-                    db = clsConnection.GetData(query1);
-
+                    DataTable db = classCustomers.getCustomerCreditvalueById(txtCustomerId.Text);
                     int check = 0;
                     if (checkboxItem.Checked == true)
                     {
                         check = 1;
                     }
-                    int insertorderbill = ClassSales.insertToOrderbill(txtOrderId.Text, txtCustomerId.Text, DateLbl.Text, float.Parse(txtaAmount.Text) - bill.amounttobepay, bill.amounttobepay, bill.amountpay, bill.credit, float.Parse(txtDiscount.Text));
-                    string query = "UPDATE customer SET creditvalue=creditvalue+" + bill.credit + " where customerID ='" + txtCustomerId.Text + "'";
-                    clsConnection.SendQuery(query);
+                    var sale = new ClassSales
+                    {
+                        orderid= txtOrderId.Text,
+                        customerid= txtCustomerId.Text,
+                        date = DateLbl.Text,
+                        discount= float.Parse(txtaAmount.Text) - bill.amounttobepay,
+                        amountobepaid= bill.amounttobepay,
+                        amountpaid = bill.amountpay,
+                        creditvalue = bill.credit,
+                        discountpercentage = float.Parse(txtDiscount.Text)
+                    };
+                    int insertSale= sale.insertSale(sale);
+                    int increaseCustomerCredit = classCustomers.updateCustomerCreditValueIncrease(bill.credit.ToString(), txtCustomerId.Text);
 
                 }
                 catch (Exception ex)
@@ -442,7 +441,7 @@ namespace MdProject
                         string query = "UPDATE item SET Qty=Qty-" + purchseamnt + " where ItemID ='" + dgvBill.Rows[i].Cells[0].Value.ToString() + "'";
                         clsConnection.SendQuery(query);
 
-                        string query2 = "UPDATE itembatch SET  Quantity=Quantity-" + purchseamnt + " where BatchID ='" + dgvBill.Rows[i].Cells[1].Value.ToString() + "' and itemid='" + dgvBill.Rows[i].Cells[0].Value.ToString() + "'";
+                        string query2 = "UPDATE Batch SET  Quantity=Quantity-" + purchseamnt + " where BatchID ='" + dgvBill.Rows[i].Cells[1].Value.ToString() + "' and itemid='" + dgvBill.Rows[i].Cells[0].Value.ToString() + "'";
                         clsConnection.SendQuery(query2);
 
                        
@@ -470,8 +469,8 @@ namespace MdProject
                     DataTable db1 = new DataTable();
                 try
                 {
-                    dgvStockView.DataSource = ClassSales.itemsSearch();
-                    string query = "select top 1 orderid from orderbill order by orderid desc";
+                    dgvStockView.DataSource = classBatch.getItemsAvailable();
+                    string query = "select top 1 orderid from sales order by orderid desc";
                     DataTable db = new DataTable();
                     db = clsConnection.GetData(query);
                     string OrderId = db.Rows[0][0].ToString();
@@ -505,10 +504,8 @@ namespace MdProject
         {
             try
             {
-                DataTable db = new DataTable();
-                string query = "select customerid from customer where customername  ='" + txtCusName.Text + "'";
-                db = clsConnection.GetData(query);
-                    txtCustomerId.Text = db.Rows[0][0].ToString();
+                DataTable db = classCustomers.getCustomerId(txtCusName.Text);
+                txtCustomerId.Text = db.Rows[0][0].ToString();
 
             }
             catch (Exception ex)
@@ -613,6 +610,20 @@ namespace MdProject
             if (e.KeyChar == (char)Keys.Back)
             {
                 e.Handled = false;
+            }
+        }
+
+        private void txtCustomerId_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable db = classCustomers.getCustomerName(txtCustomerId.Text);
+                txtCusName.Text = db.Rows[0][0].ToString();
+            }
+            catch (Exception ex)
+            {
+                txtCusName.Text = "";
+                //MessageBox.Show(ex.Message);
             }
         }
     }

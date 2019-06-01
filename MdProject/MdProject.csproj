@@ -53,11 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classCustomers.cs" />
-    <Compile Include="classItemBatch.cs" />
-    <Compile Include="classItems.cs" />
+    <Compile Include="classBatch.cs" />
+    <Compile Include="Items.cs" />
+    <Compile Include="classSalesBatch.cs" />
     <Compile Include="classOrderValidate.cs" />
     <Compile Include="ClassPayments.cs" />
-    <Compile Include="classPurchaseDetails.cs" />
+    <Compile Include="classPurchaseBatch.cs" />
     <Compile Include="classPurchases.cs" />
     <Compile Include="classReturns.cs" />
     <Compile Include="ClassSales.cs" />

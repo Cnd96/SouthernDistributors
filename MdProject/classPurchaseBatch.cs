@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MdProject
 {
-    class classPurchaseDetails
+    class classPurchaseBatch
     {
         public static int insertpurchaseDetails(string pid, string iid, string bid, int quantity)
         {
-            string query = "insert into purchasedetails values ( '" + pid + "', '" + iid + "', '" + bid + "', " + quantity + "); ";
+            string query = "insert into PurchaseBatch values ( '" + pid + "', '" + iid + "', '" + bid + "', " + quantity + "); ";
             int result = clsConnection.SendQuery(query);
             return result;
         }

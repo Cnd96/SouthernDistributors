@@ -28,7 +28,7 @@ namespace MdProject
                 customernamefill();
                 txtOrderId.Text = orderid;             
                 DataTable db = new DataTable();
-                db = ClassSales.customersearchfromorder(orderid);
+                db = ClassSales.customersearchfromSales(orderid);
                 txtCustomerId.Text = db.Rows[0][0].ToString();
                 prevcusid = db.Rows[0][0].ToString();
                 txtCustomerName.Text = db.Rows[0][1].ToString();
@@ -48,7 +48,7 @@ namespace MdProject
                 customernamefill();
                 txtOrderId.Text = orderid;
                 DataTable db = new DataTable();
-                db = ClassSales.customersearchfromorder(orderid);
+                db = ClassSales.customersearchfromSales(orderid);
                 txtCustomerId.Text = db.Rows[0][0].ToString();
                 prevcusid = db.Rows[0][0].ToString();
                 txtCustomerName.Text = db.Rows[0][1].ToString();
